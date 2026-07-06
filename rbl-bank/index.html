@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBL Bank's First UPI Credit Card Payment Experience | Mitesh Shetty</title>
+<meta name="description" content="How I designed RBL Bank's first UPI-powered self-service credit card payment experience from scratch — 3 journeys, 7+ edge cases, and trust built into every payment state.">
+<meta name="author" content="Mitesh Shetty">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RBL Bank's First UPI Payment Experience | Mitesh Shetty">
+<meta property="og:description" content="When money is involved, trust becomes the product. How I helped launch RBL Bank's first UPI credit card payment capability.">
+<meta property="og:image" content="images/step3-qr.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RBL Bank's First UPI Payment Experience | Mitesh Shetty">
+<meta name="twitter:image" content="images/step3-qr.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="spotlight" aria-hidden="true"></div>
+<div id="code-layer" aria-hidden="true"></div>
+
+<div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- ── Navigation — matches homepage exactly ── -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="../index.html" class="nav-logo-link" aria-label="Back to portfolio">
+      <span class="nav-name">Mitesh<span>.</span></span>
+    </a>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <span class="nav-clock" id="nav-time" aria-label="Current time in Los Angeles">Los Angeles · –:–</span>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <div class="nav-avail" aria-label="Open to Senior roles">
+      <span class="avail-dot" aria-hidden="true"></span>Available
+    </div>
+  </div>
+
+  <div class="nav-links-desktop nav-right">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    <a href="mailto:mitesh@example.com" class="nav-email">mitesh@example.com</a>
+  </div>
+
+  <button class="nav-ham" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mob-cs">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="nav-mob-cs" id="nav-mob-cs" role="navigation" aria-label="Mobile navigation">
+  <a href="../index.html#work">Work</a>
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#experience">Experience</a>
+  <a href="../resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+  <a href="mailto:mitesh@example.com">mitesh@example.com</a>
+</div>
+
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<header class="hero" id="top">
+
+  <!-- Left column — all text content -->
+  <div class="hero-content-col">
+    <span class="hero-tag fade-up">RBL Bank &middot; 0→1 Product Design &middot; 2022</span>
+
+    <h1 class="hero-title fade-up delay-1">
+      When money is involved,<br>
+      <span class="text-dim">trust becomes the product.</span>
+    </h1>
+
+    <p class="hero-sub-hook fade-up delay-2">
+      RBL Bank wanted to launch its first UPI-powered credit card payment experience. My challenge was designing a journey customers could trust from the very first transaction — on a platform that had never offered this capability before.
+    </p>
+
+    <p class="hero-summary fade-up delay-2">
+      I led end-to-end design of RBL Bank's first UPI payment experience for credit card customers — from blank canvas to shipped product. Before this, customers could only pay their credit card bill online via internet banking or another bank's debit card. UPI wasn't an option. Three distinct payment journeys. Seven-plus edge cases. Every failure state. And one question that had to be answered on every screen: <em style="color:var(--t1)">did my money go through?</em>
+    </p>
+
+    <div class="hero-meta fade-up delay-3" role="list">
+      <div class="meta-item" role="listitem"><div class="meta-label">My Role</div><div class="meta-value">Senior UX/UI Designer</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Company</div><div class="meta-value">RBL Bank</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Timeline</div><div class="meta-value">Q2 – Q3 2022</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Platform</div><div class="meta-value">Responsive Web</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Scope</div><div class="meta-value">End-to-end, 0→1</div></div>
+    </div>
+
+    <div class="hero-impact fade-up delay-4">
+      <div class="impact-stat"><span class="impact-num">0→1</span><span class="impact-desc">new UPI capability launched</span></div>
+      <div class="impact-stat"><span class="impact-num">3</span><span class="impact-desc">complete payment journeys</span></div>
+      <div class="impact-stat"><span class="impact-num">7+</span><span class="impact-desc">edge cases designed</span></div>
+      <div class="impact-stat"><span class="impact-num">100%</span><span class="impact-desc">self-service, no agent needed</span></div>
+    </div>
+  </div>
+
+  <!-- Right column — device at top, meaningful content below fills empty space -->
+  <div class="hero-visual fade-up delay-2" aria-label="Product preview and design context">
+
+    <!-- Device mockup — top of right column -->
+    <div class="hero-device-img">
+      <img
+        src="images/hero-mockup.png"
+        alt="RBL Bank Make a Payment — shown on MacBook Pro and iPhone"
+        loading="eager"
+        id="cs-hero-device"
+      >
+    </div>
+
+    <!-- Design principle cards — fills the space below the device -->
+    <div class="hero-principles fade-up delay-3" aria-label="Design principles for this project">
+      <div class="hp-label">Design principles</div>
+      <div class="hp-grid">
+        <div class="hp-card">
+          <div class="hp-icon">🔐</div>
+          <div class="hp-title">Trust first</div>
+          <div class="hp-desc">Every interaction must build confidence before it builds features</div>
+        </div>
+        <div class="hp-card">
+          <div class="hp-icon">🗂</div>
+          <div class="hp-title">Progressive disclosure</div>
+          <div class="hp-desc">Show only what the user needs at each moment — nothing more</div>
+        </div>
+        <div class="hp-card">
+          <div class="hp-icon">⚠️</div>
+          <div class="hp-title">Failure is the product</div>
+          <div class="hp-desc">Edge cases and error states are not afterthoughts — they define the experience</div>
+        </div>
+        <div class="hp-card">
+          <div class="hp-icon">📱</div>
+          <div class="hp-title">Responsive-first</div>
+          <div class="hp-desc">Mobile and desktop flows designed in parallel, not adapted after</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mini process timeline -->
+    <div class="hero-process fade-up delay-4" aria-label="Design process timeline">
+      <div class="hp-label">Process</div>
+      <div class="hproc-list">
+        <div class="hproc-item hproc-done"><span class="hproc-dot"></span><span class="hproc-name">Research</span><span class="hproc-detail">Competitive audit · Support log analysis</span></div>
+        <div class="hproc-item hproc-done"><span class="hproc-dot"></span><span class="hproc-name">Insights</span><span class="hproc-detail">6 key trust signals identified</span></div>
+        <div class="hproc-item hproc-done"><span class="hproc-dot"></span><span class="hproc-name">Architecture</span><span class="hproc-detail">3 journeys mapped and validated</span></div>
+        <div class="hproc-item hproc-done"><span class="hproc-dot"></span><span class="hproc-name">Design &amp; Testing</span><span class="hproc-detail">UAT across 3 cycles, 4 defects resolved</span></div>
+        <div class="hproc-item hproc-active"><span class="hproc-dot"></span><span class="hproc-name">Launch</span><span class="hproc-detail">Shipped · Self-service UPI live</span></div>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+<div class="device-showcase fade-up" style="position:relative;">
+  <div class="device-stage">
+    <img src="images/step1-desktop-mockup.png"
+         alt="RBL Bank Make a Payment — desktop view shown in MacBook Pro mockup, displaying the 3-step credit card UPI payment entry screen"
+         loading="eager"
+         class="device-img-desktop">
+  </div>
+  <div style="position:absolute;bottom:clamp(16px,2vw,28px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(7,8,12,0.85);border:1px solid var(--border-hi);border-radius:100px;padding:6px 14px;backdrop-filter:blur(12px);white-space:nowrap;z-index:2;">
+    <span style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);">Before: Net Banking + Debit Card only</span>
+    <span style="color:var(--t3)">→</span>
+    <span style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);">After: UPI launched</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════ 01 — WHY THIS EXISTED ══════════════════════════ -->
+<section class="section" id="why" aria-labelledby="h-why">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">01</span><div class="sm-line"></div><span class="sm-label">Why This Project Existed</span></div>
+
+    <div class="narrow fade-up">
+      <div class="badge-01">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        New product capability — not a redesign
+      </div>
+      <h2 id="h-why">This wasn't an optimization. <span class="text-gold">It was a launch.</span></h2>
+      <p>Before this project, RBL Bank credit card customers had limited options for paying their bill online — internet banking or another bank's debit card. UPI, the payment method most of them used for everything else in their daily lives, wasn't available on the RBL website at all.</p>
+      <p>The business opportunity was clear. The customer need was urgent. What wasn't clear was the complexity hiding inside what sounded like a simple request: <strong>"Add UPI as a payment option."</strong></p>
+    </div>
+
+    <!-- Why Now — market context -->
+    <div class="why-now fade-up">
+      <div class="why-now-label">Why Now</div>
+      <p>With UPI becoming India's preferred digital payment method — processing over 10 billion transactions a month by 2022 — customers increasingly expected credit card payments to be as seamless as everyday UPI transfers. Paying a credit card bill by calling a helpline felt like a generation behind. The business saw a narrow window to build this capability before it became a competitive liability.</p>
+    </div>
+
+    <!-- ── Before / After visual proof ── -->
+    <div class="fade-up" style="margin:clamp(32px,4vw,52px) 0;">
+      <div class="sm" style="margin-bottom:clamp(20px,2.5vw,28px);">
+        <span class="sm-num" style="color:var(--t3);font-size:10px;">Before → After</span>
+        <div class="sm-line"></div>
+        <span class="sm-label">What existed before this project — and what we replaced it with</span>
+      </div>
+
+      <!-- Before: 2 screens side by side with red-tinted treatment -->
+      <div style="margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);padding:3px 10px;border:1px solid rgba(255,107,71,0.3);border-radius:100px;background:rgba(255,107,71,0.06);">Before — No UPI option</span>
+          <span style="font-size:12px;color:var(--t3);">The only payment methods available were Net Banking and Debit Card via third-party gateways</span>
+        </div>
+        <div class="screen-grid" style="gap:clamp(10px,1.5vw,16px);">
+          <div>
+            <div class="screen-frame img-hover" style="border-color:rgba(255,107,71,0.2);position:relative;overflow:hidden;">
+              <div style="position:absolute;top:10px;left:10px;z-index:2;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,107,71,0.9);color:#fff;padding:3px 8px;border-radius:4px;">Net Banking</div>
+              <img src="images/before-netbanking.png" alt="Before — RBL Bank credit card payment options showing Net Banking tab selected, using BillDesk and Razorpay gateways — no UPI option" loading="lazy">
+            </div>
+            <div class="screen-caption" style="margin-top:8px;">
+              <span class="screen-cap-tag" style="color:var(--red);">Net Banking only</span>
+              <p class="screen-cap-text">Customers had to use RBL's net banking or route through BillDesk/Razorpay. Fragmented, off-brand, no UPI.</p>
+            </div>
+          </div>
+          <div>
+            <div class="screen-frame img-hover" style="border-color:rgba(255,107,71,0.2);position:relative;overflow:hidden;">
+              <div style="position:absolute;top:10px;left:10px;z-index:2;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,107,71,0.9);color:#fff;padding:3px 8px;border-radius:4px;">Debit Card</div>
+              <img src="images/before-debitcard.png" alt="Before — Debit Card tab selected, Razorpay powered, accepting all bank debit cards — still no UPI" loading="lazy">
+            </div>
+            <div class="screen-caption" style="margin-top:8px;">
+              <span class="screen-cap-tag" style="color:var(--red);">Debit card via gateway</span>
+              <p class="screen-cap-text">Another bank's debit card — powered by Razorpay. The bank had no ownership of this payment relationship.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow connector -->
+      <div style="display:flex;align-items:center;justify-content:center;padding:clamp(14px,2vw,20px) 0;gap:12px;">
+        <div style="height:1px;flex:1;background:linear-gradient(to right,transparent,var(--border))"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="20"/><polyline points="6 14 12 20 18 14"/></svg>
+          <span style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)">This project</span>
+        </div>
+        <div style="height:1px;flex:1;background:linear-gradient(to left,transparent,var(--border))"></div>
+      </div>
+
+      <!-- After: UPI now exists -->
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);padding:3px 10px;border:1px solid rgba(52,201,128,0.3);border-radius:100px;background:rgba(52,201,128,0.06);">After — UPI is now an option</span>
+          <span style="font-size:12px;color:var(--t3);">The same modal now shows a UPI tab — built and launched by this project</span>
+        </div>
+        <div style="max-width:640px;">
+          <div class="screen-frame img-hover" style="border-color:rgba(52,201,128,0.25);position:relative;overflow:hidden;">
+            <div style="position:absolute;top:10px;left:10px;z-index:2;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(52,201,128,0.9);color:#07080C;padding:3px 8px;border-radius:4px;">UPI ← This is new</div>
+            <img src="images/after-upi-start.png" alt="After — UPI tab now appears in the Credit Card Bill Payment Options modal, showing UPI on RBL Bank Website and RBL MyCard App options" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:8px;">
+            <span class="screen-cap-tag" style="color:var(--green);">UPI tab — launched by this project</span>
+            <p class="screen-cap-text">The same modal, the same left-nav, the same customers — but now with a UPI tab that didn't exist before. This is the 0→1 moment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-grid fade-up">
+      <div class="why-card">
+        <div class="why-card-label label-user">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Customer Problems
+        </div>
+        <ul class="why-list">
+          <li>No in-bank UPI channel — forced to leave the RBL ecosystem to pay their own credit card bill</li>
+          <li>No clarity on payment options — outstanding, minimum, and custom amounts were equally confusing</li>
+          <li>Zero payment status feedback — customers couldn't tell if their money had left their account</li>
+          <li>Credit Card and STPL loan payments were impossible to distinguish — wrong payments happened constantly</li>
+          <li>Zero-balance states showed blank screens — customers assumed something was broken and called support</li>
+        </ul>
+      </div>
+      <div class="why-card">
+        <div class="why-card-label label-biz">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Business Problems
+        </div>
+        <ul class="why-list">
+          <li>No bank-owned UPI surface — customer relationships and payment data lived on competitor platforms</li>
+          <li>High support volume from payment confusion, zero-balance misunderstandings, and STPL mix-ups</li>
+          <li>Digital adoption lagged — routine bill payments were driving branch visits and call center load</li>
+          <li>No scalable framework — every new loan or payment product would need to be rebuilt from scratch</li>
+          <li>STPL and Credit Card journeys were blended in legacy flows, creating compliance risk and complaints</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="transition-hook fade-up">
+      <span class="transition-hook-arrow">↓</span>
+      <p class="transition-hook-text">The challenge wasn't collecting a payment. The challenge was earning trust at the moment money changes hands. <strong>First, we needed to understand what trust actually meant to our users.</strong></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 02 — RESEARCH ══════════════════════════ -->
+<section class="section section-alt" id="research" aria-labelledby="h-research">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">02</span><div class="sm-line"></div><span class="sm-label">Research Insights</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(32px,4vw,48px);">
+      <h2 id="h-research">Users don't care about UPI. <span class="text-gold">They care about certainty.</span></h2>
+      <p>Two weeks of competitive analysis across GPay, PhonePe, CRED, Paytm, and five banking apps — supplemented by support call log review and stakeholder interviews. The pattern was the same everywhere. This wasn't a feature problem. It was a trust problem.</p>
+    </div>
+
+    <div class="insights-grid fade-up">
+      <div class="insight-card">
+        <div class="insight-num">Insight 01</div>
+        <p class="insight-q">"Did my payment go through?"</p>
+        <p class="insight-a">That's the only question users are asking during a payment. Design response: every screen had to answer this question — proactively, not reactively.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Insight 02</div>
+        <p class="insight-q">Trust breaks in the 30–90 second gap after QR scan.</p>
+        <p class="insight-a">This silent window — between scanning and confirmation — is where anxiety spikes. Design response: fill the gap with a visible timer and clear progress context.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Insight 03</div>
+        <p class="insight-q">Clarity beats feature richness, every time.</p>
+        <p class="insight-a">Apps with fewer features but immediate, specific feedback outperformed richer apps with ambiguous states. Design response: ruthlessly simplify each screen to one job.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Insight 04</div>
+        <p class="insight-q">Zero-balance was the #1 avoidable support trigger.</p>
+        <p class="insight-a">Customers with ₹0 outstanding saw blank amounts, assumed the system was broken, and called support. Design response: proactive state explanation — before the customer wonders.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Insight 05</div>
+        <p class="insight-q">Blended Credit Card and STPL UI causes wrong payments.</p>
+        <p class="insight-a">Customers couldn't distinguish between products in a shared UI. The consequences were dispute-level errors. Design response: dedicated journeys, not a toggle.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Insight 06</div>
+        <p class="insight-q">Slow validation errors feel like bank failures.</p>
+        <p class="insight-a">A 3-second server-side response to an invalid card number felt like a system error. Design response: client-side validation, immediate and specific — before any API call.</p>
+      </div>
+    </div>
+
+    <div class="callout fade-up">
+      <p>"Payment design is not about the transaction. It's about the confidence the customer feels while making it."</p>
+    </div>
+
+    <div class="transition-hook fade-up">
+      <span class="transition-hook-arrow">↓</span>
+      <p class="transition-hook-text">The findings revealed something unexpected. <strong>We weren't designing one payment journey. We were designing three — and each one had completely different customer expectations.</strong></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 03 — THREE JOURNEYS ══════════════════════════ -->
+<section class="section" id="journeys" aria-labelledby="h-journeys">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">03</span><div class="sm-line"></div><span class="sm-label">Three Journeys. One Product.</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(32px,4vw,56px);">
+      <h2 id="h-journeys">We weren't designing one payment flow. <span class="text-gold">We were designing three.</span></h2>
+      <p>What looked like a single payment screen was, beneath the surface, three distinct product experiences — each with different customers, different financial rules, different emotional stakes. Designing them as one would have been the easiest mistake to make, and the most expensive one to fix.</p>
+    </div>
+
+    <div class="journey-map fade-up">
+      <div class="journey-map-label">Journey 1 — Credit Card Payment &nbsp;·&nbsp; Standard flow</div>
+      <div class="journey-steps">
+        <div class="j-step active"><div class="j-dot">1</div><div class="j-label">Identify</div><div class="j-sub">Card + mobile</div></div>
+        <div class="j-step active"><div class="j-dot">2</div><div class="j-label">Review balance</div><div class="j-sub">Outstanding first</div></div>
+        <div class="j-step active"><div class="j-dot">3</div><div class="j-label">Choose amount</div><div class="j-sub">Full / Min / Custom</div></div>
+        <div class="j-step active"><div class="j-dot">4</div><div class="j-label">Pay via UPI</div><div class="j-sub">QR + 5-min timer</div></div>
+        <div class="j-step active"><div class="j-dot">5</div><div class="j-label">Confirm</div><div class="j-sub">Receipt + Payment ID</div></div>
+      </div>
+    </div>
+
+    <div class="journey-map fade-up">
+      <div class="journey-map-label">Journey 2 — Zero Outstanding &nbsp;·&nbsp; Graceful exit</div>
+      <div class="journey-steps">
+        <div class="j-step active"><div class="j-dot">1</div><div class="j-label">Identify</div><div class="j-sub">Card + mobile</div></div>
+        <div class="j-step active"><div class="j-dot">2</div><div class="j-label">Review balance</div><div class="j-sub">All amounts = ₹0</div></div>
+        <div class="j-step stopped"><div class="j-dot">✕</div><div class="j-label">Journey ends</div><div class="j-sub">With explanation</div></div>
+        <div class="j-step"><div class="j-dot" style="opacity:.15">—</div><div class="j-label" style="opacity:.15">—</div><div class="j-sub" style="opacity:.15">—</div></div>
+        <div class="j-step"><div class="j-dot" style="opacity:.15">—</div><div class="j-label" style="opacity:.15">—</div><div class="j-sub" style="opacity:.15">—</div></div>
+      </div>
+    </div>
+
+    <div class="journey-map fade-up">
+      <div class="journey-map-label">Journey 3 — STPL Loan Repayment &nbsp;·&nbsp; Separate product</div>
+      <div class="journey-steps">
+        <div class="j-step blue"><div class="j-dot">1</div><div class="j-label">STPL entry</div><div class="j-sub">Dedicated tab</div></div>
+        <div class="j-step blue"><div class="j-dot">2</div><div class="j-label">Loan account</div><div class="j-sub">15-digit format</div></div>
+        <div class="j-step blue"><div class="j-dot">3</div><div class="j-label">Review loan</div><div class="j-sub">Full / Custom only</div></div>
+        <div class="j-step blue"><div class="j-dot">4</div><div class="j-label">Pay via UPI</div><div class="j-sub">QR or other modes</div></div>
+        <div class="j-step blue"><div class="j-dot">5</div><div class="j-label">Confirm</div><div class="j-sub">Loan receipt</div></div>
+      </div>
+    </div>
+
+    <p class="hook fade-up">"Three journeys. One entry point. Zero margin for a customer ending up in the wrong one."</p>
+
+    <!-- Journey overview artboards from Figma -->
+    <div class="fade-up" style="margin-top:clamp(32px,4vw,52px);">
+      <div class="sm" style="margin-bottom:clamp(18px,2.5vw,26px);">
+        <span class="sm-num" style="color:var(--t3);font-size:10px;">Figma overview</span>
+        <div class="sm-line"></div>
+        <span class="sm-label">All three journeys mapped — the full design scope at a glance</span>
+      </div>
+
+      <!-- Desktop journey overview -->
+      <div style="margin-bottom:clamp(14px,2vw,20px);">
+        <div style="font-size:11px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Desktop journeys
+        </div>
+        <div class="screen-frame img-hover" style="border-color:var(--border-hi);">
+          <img src="images/journey-overview-desktop.jpg"
+               alt="Figma artboard showing all three desktop journeys: Credit Card payment (4 screens), Zero Outstanding (4 screens), STPL outstanding payment (4 screens), and success/error/invalid/failed/pending states"
+               loading="lazy"
+               style="width:100%;display:block;">
+        </div>
+        <div class="screen-caption" style="margin-top:10px;">
+          <span class="screen-cap-tag">Desktop · 3 journeys + all state screens</span>
+          <p class="screen-cap-text">Credit Card make a payment · Zero outstanding · STPL outstanding · Success, error, invalid, failed, pending states.</p>
+        </div>
+      </div>
+
+      <!-- Mobile journey overview -->
+      <div>
+        <div style="font-size:11px;font-weight:500;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg>
+          Mobile journeys
+        </div>
+        <div class="screen-frame img-hover" style="border-color:var(--border-hi);">
+          <img src="images/journey-overview-mobile.jpg"
+               alt="Figma artboard showing all three mobile journeys: Credit Card Journey (9 screens), Zero Outstanding payment (5 screens), STPL outstanding amount payment Journey (5 screens)"
+               loading="lazy"
+               style="width:100%;display:block;">
+        </div>
+        <div class="screen-caption" style="margin-top:10px;">
+          <span class="screen-cap-tag">Mobile · 3 journeys</span>
+          <p class="screen-cap-text">Credit Card Journey · Zero outstanding · STPL outstanding — responsive design from the start, not a mobile afterthought.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="transition-hook fade-up">
+      <span class="transition-hook-arrow">↓</span>
+      <p class="transition-hook-text">Designing the happy path was relatively straightforward. <strong>The real product thinking emerged when we had to make the hard calls — the ones with real trade-offs.</strong></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 04 — A DECISION THAT CHANGED EVERYTHING ══════════════════════════ -->
+<section class="section section-alt" id="big-decision" aria-labelledby="h-bigdecision">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">04</span><div class="sm-line"></div><span class="sm-label">A Design Decision That Changed Everything</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
+      <h2 id="h-bigdecision">Why we chose QR over UPI deep linking — <span class="text-gold">and why it mattered.</span></h2>
+      <p>Early in the project, we faced a foundational technology decision that would shape the entire payment experience. It wasn't a visual design choice. It was a product architecture choice with downstream consequences for trust, conversion, and technical risk.</p>
+    </div>
+
+    <div class="decision-deep fade-up">
+      <div class="decision-deep-header">
+        <div class="dd-label">The Core Decision</div>
+        <h3>How should users initiate a UPI payment — via a QR code displayed on screen, or via deep linking that opens their UPI app automatically?</h3>
+      </div>
+      <div class="decision-deep-body">
+        <div class="dd-col">
+          <div class="dd-col-label">Problem</div>
+          <p>The payment had to be initiated via UPI, but there were two technical paths. Deep linking felt like the smoother UX — one tap, UPI app opens, payment completes. But the platform constraints were significant.</p>
+        </div>
+        <div class="dd-col">
+          <div class="dd-col-label">Options Considered</div>
+          <p><strong>Option A:</strong> UPI deep linking — automatic app redirect on tap.<br><br><strong>Option B:</strong> QR code display — customer scans from any UPI app on any device.</p>
+        </div>
+        <div class="dd-col">
+          <div class="dd-col-label">Trade-offs</div>
+          <p>Deep linking required native app API integrations that our responsive web platform couldn't guarantee across Android, iOS, and browser combinations. A broken deep link mid-payment is more trust-damaging than a QR. QR is universal — no integration dependency, no device-specific failures.</p>
+        </div>
+        <div class="dd-col dd-col-highlight">
+          <div class="dd-col-label">Decision + Outcome</div>
+          <p><strong>QR code.</strong> Lower technical risk, universal compatibility, and — critically — QR enables the 5-minute countdown timer that deep linking can't support. That timer became one of the most important trust signals in the entire experience.</p>
+          <!-- Real screen showing the outcome of this decision -->
+          <div class="screen-frame" style="margin-top:16px;border-color:rgba(232,197,71,0.25);">
+            <img src="images/step3-qr.jpg" alt="The QR payment screen — direct output of the QR architecture decision, showing countdown timer at 4:58" loading="lazy" style="object-fit:cover;object-position:top center;max-height:200px;">
+          </div>
+          <p style="font-size:11px;color:var(--t3);margin-top:8px;line-height:1.5;">The screen this decision produced — with the countdown timer that deep linking could never have supported.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout fade-up">
+      <p>"The best design decisions at this project weren't made in Figma. They were made in a room with engineering, asking: what can we actually trust to work for every user, on every device, every time?"</p>
+    </div>
+
+    <div class="transition-hook fade-up">
+      <span class="transition-hook-arrow">↓</span>
+      <p class="transition-hook-text">With the architecture decided, it was time to design the core experience — <strong>four screens, each with a single job, and no room for ambiguity.</strong></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════ PROTOTYPE ══════════════════════ -->
+<section class="section section-alt" id="prototype" aria-labelledby="h-proto">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">↗</span><div class="sm-line"></div><span class="sm-label">Interactive Prototype</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(24px,3vw,40px);">
+      <h2 id="h-proto">Explore the <span class="text-gold">full payment experience.</span></h2>
+      <p>All three journeys are accessible from the starting screen. Click through to experience how the payment flow, edge cases, and failure states work together as a connected product.</p>
+    </div>
+
+    <!-- Figma embed — with error handling -->
+    <div class="fade-up" id="proto-wrap" style="position:relative;width:100%;padding-bottom:56.25%;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;">
+      <iframe
+        id="figma-embed"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+        src="https://embed.figma.com/proto/tRNARu0R74kAzAkPSOdSLo/RBL-Website-_Developer-Hands-off?node-id=9808-61663&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=9808%3A61663&show-proto-sidebar=1&embed-host=share"
+        allowfullscreen
+        loading="lazy"
+        title="RBL Bank UPI Payment — Interactive Figma Prototype"
+        aria-label="Interactive prototype of the RBL Bank UPI credit card payment experience"
+      ></iframe>
+    </div>
+
+    <!-- Footer row -->
+    <div class="fade-up" style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:13px;color:var(--t3);margin:0;">You can also explore this prototype directly in Figma.</p>
+      <a
+        href="https://www.figma.com/proto/tRNARu0R74kAzAkPSOdSLo/RBL-Website-_Developer-Hands-off?node-id=9808-61663&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=9808%3A61663&show-proto-sidebar=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--gold);padding:10px 20px;border:1px solid rgba(232,197,71,0.3);border-radius:100px;transition:background .2s,border-color .2s;text-decoration:none;"
+        onmouseover="this.style.background='rgba(232,197,71,0.08)'"
+        onmouseout="this.style.background='transparent'"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open interactive prototype ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 05 — MAIN PAYMENT JOURNEY ══════════════════════════ -->
+<section class="section" id="payment" aria-labelledby="h-payment">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">05</span><div class="sm-line"></div><span class="sm-label">Main Payment Journey</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(40px,5vw,64px);">
+      <h2 id="h-payment">Four screens. <span class="text-gold">Every pixel intentional.</span></h2>
+      <p>Each screen had exactly one job. The design removed everything that didn't serve the customer's most urgent need at that moment — and added everything that reduced uncertainty. Screens below support the story. They don't tell it.</p>
+    </div>
+
+    <!-- Screen 1 — Entry -->
+    <div class="ds fade-up">
+      <div class="screen-frame screen-frame-device img-hover">
+        <img src="images/step1-mobile-hand.png" alt="Step 1: Credit card payment entry shown on iPhone held in hand — Make a Payment screen with 3-step process guide and card number fields" loading="lazy" class="device-img-mobile">
+      </div>
+      <div class="ds-meta">
+        <div><div class="dm-tag">Problem</div><p class="dm-text">Customers arrived with no context. Cold entry into a banking form felt unfamiliar and risky — especially on a web page the bank had never offered before.</p></div>
+        <div><div class="dm-tag">Decision</div><p class="dm-text"><strong>Show the 3-step process before any data entry.</strong> Fetch → Review → Pay. Expectations set, RBL's ownership of the experience established, perceived risk reduced — before a single digit is typed.</p></div>
+        <div><div class="dm-tag">Outcome</div><p class="dm-text">Trust signals before commitment. Customers understood the journey before they were inside it.</p></div>
+      </div>
+    </div>
+
+    <!-- Screen 2 — Amount selection -->
+    <div class="ds fade-up">
+      <div class="ds-meta">
+        <div><div class="dm-tag">Problem</div><p class="dm-text">Three payment options — full outstanding, minimum due, custom amount — each with different financial consequences. No default, no guidance. The result: decision paralysis and wrong-amount payments.</p></div>
+        <div><div class="dm-tag">Decision</div><p class="dm-text"><strong>Outstanding balance shown first. Remaining Amount Due pre-selected.</strong> Nudge toward full repayment — healthier for the customer's account — while keeping all choices accessible. Due date surfaced in context, not buried.</p></div>
+        <div><div class="dm-tag">Outcome</div><p class="dm-text">Wrong-amount payments reduced. The pre-selection guided toward the financially better choice without removing agency.</p></div>
+      </div>
+      <div class="screen-frame img-hover">
+        <img src="images/step2-details.jpg" alt="Step 2: Amount selection — Remaining Amount Due Rs 45,670 pre-selected, Minimum Due Rs 5,100, Other Amount as alternatives" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Screen 3 — QR (DOMINANT — the most critical moment in the journey) -->
+    <div class="fade-up" style="margin:clamp(32px,4vw,56px) 0;">
+      <!-- Label above -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Step 3 — The most anxious moment in the journey</span>
+      </div>
+      <!-- QR screen — 30% larger, gold-accented frame -->
+      <div class="screen-frame img-hover" style="max-width:720px;margin:0 auto;border-color:rgba(232,197,71,0.3);box-shadow:0 0 0 1px rgba(232,197,71,0.1),0 32px 64px rgba(0,0,0,0.4);">
+        <img src="images/step3-qr.jpg" alt="Step 3: UPI QR code — payment request Rs 45,670, countdown timer 4:58 minutes, download and share options below QR" loading="lazy">
+      </div>
+      <!-- 3-column PDO meta beneath the dominant screen -->
+      <div style="max-width:720px;margin:20px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);">
+        <div style="background:var(--bg-2);padding:20px 22px;">
+          <div class="dm-tag" style="margin-bottom:8px;">Problem</div>
+          <p class="dm-text" style="font-size:13px;">UPI QR expires in 5 minutes — invisible to the user. Refreshing the page voided the entire session and required starting over.</p>
+        </div>
+        <div style="background:var(--bg-2);padding:20px 22px;border-left:1px solid var(--border);border-right:1px solid var(--border);">
+          <div class="dm-tag" style="margin-bottom:8px;">Decision</div>
+          <p class="dm-text" style="font-size:13px;"><strong style="color:var(--t1);">Visible countdown timer from the moment QR appears.</strong> "Do not refresh" warning in context. Download + share for device-switchers — eliminating the need to refresh.</p>
+        </div>
+        <div style="background:var(--bg-2);padding:20px 22px;">
+          <div class="dm-tag" style="margin-bottom:8px;">Outcome</div>
+          <p class="dm-text" style="font-size:13px;">Customers knew exactly how long they had. Urgency without panic. The silent waiting gap between scan and confirmation now had a voice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen 4 — Confirmation: show all 3 outcome states side-by-side to prove consistent receipt design -->
+    <div class="fade-up" style="margin-bottom:clamp(24px,3vw,40px);">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t3)">Step 4 — Every outcome gets a receipt</span>
+      </div>
+      <!-- 3 outcome states side-by-side: same layout, different signal -->
+      <div class="screen-grid screen-grid-3">
+        <div>
+          <div class="screen-frame img-hover" style="border-color:rgba(52,201,128,0.25);">
+            <img src="images/state-success.jpg" alt="Payment Successful — green checkmark, amount Rs 45,670, Payment ID S8263795, name and timestamp" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:10px;">
+            <span class="screen-cap-tag" style="color:var(--green);">✓ Success</span>
+            <p class="screen-cap-text">Complete receipt. Amount, Payment ID, timestamp. Nothing left to wonder about.</p>
+          </div>
+        </div>
+        <div>
+          <div class="screen-frame img-hover" style="border-color:rgba(232,160,58,0.25);">
+            <img src="images/state-pending.jpg" alt="Payment Pending — amber warning icon, same transaction details preserved for reference" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:10px;">
+            <span class="screen-cap-tag" style="color:#E8A43A;">⏳ Pending</span>
+            <p class="screen-cap-text">Payment ID preserved. "Allow 24 hours." Wait, but don't panic — the bank has it.</p>
+          </div>
+        </div>
+        <div>
+          <div class="screen-frame img-hover" style="border-color:rgba(255,107,71,0.25);">
+            <img src="images/state-failed.jpg" alt="Payment Failed — red X icon, same layout, Payment ID still shown for dispute reference" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:10px;">
+            <span class="screen-cap-tag" style="color:var(--red);">✕ Failed</span>
+            <p class="screen-cap-text">Dispute evidence preserved even at the worst moment. The failure screen became a self-service recovery tool.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Design decision note below the 3 states -->
+      <div style="margin-top:20px;padding:16px 20px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);display:flex;gap:14px;align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,197,71,0.6)" stroke-width="2" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p style="font-size:13px;color:var(--t3);line-height:1.6;margin:0;"><strong style="color:var(--t2);font-weight:500;">Design decision:</strong> All three states use identical layout — same card, same fields, same position. Only the icon color and heading change. This consistency means customers never have to learn a new UI when things go wrong. The structure is a trust signal.</p>
+      </div>
+    </div>
+
+    <div class="transition-hook fade-up">
+      <span class="transition-hook-arrow">↓</span>
+      <p class="transition-hook-text">Designing the happy path was the straightforward part. <strong>The real product thinking began when customers didn't follow it.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FULL FLOW VIDEO — after all screens are introduced ══ -->
+<div class="full-video fade-up" aria-label="RBL Bank payment flow walkthrough">
+  <div class="video-wrap">
+    <video
+      class="case-video"
+      src="images/payment-flow.mp4"
+      autoplay loop muted playsinline preload="metadata"
+      aria-label="Complete UPI credit card payment flow — screen recording from entry to confirmation"
+    ></video>
+    <div class="video-controls" aria-hidden="true">
+      <button class="vid-btn vid-play" aria-label="Play or pause video">
+        <svg class="icon-pause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="2" y="1" width="4" height="12" rx="1"/><rect x="8" y="1" width="4" height="12" rx="1"/></svg>
+        <svg class="icon-play"  width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><path d="M3 1.5l9 5.5-9 5.5V1.5z"/></svg>
+      </button>
+      <div class="vid-label">Full payment flow walkthrough</div>
+      <button class="vid-btn vid-mute" aria-label="Toggle mute">
+        <svg class="icon-unmuted" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4.5h3l4-3v11l-4-3H1V4.5z"/><path d="M10 3.5c1.5 1 2 2 2 3.5s-.5 2.5-2 3.5"/></svg>
+        <svg class="icon-muted"   width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M1 4.5h3l4-3v11l-4-3H1V4.5z"/><line x1="11" y1="4" x2="13" y2="6"/><line x1="13" y1="4" x2="11" y2="6"/></svg>
+      </button>
+    </div>
+    <div class="video-caption">
+      <span class="vid-tag">Screen recording</span>
+      <span class="vid-desc">Now that you've seen each screen — watch all three journeys as a connected experience</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 06 — EDGE CASES ══════════════════════════ -->
+<section class="section section-alt" id="edge" aria-labelledby="h-edge">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">06</span><div class="sm-line"></div><span class="sm-label">Edge Cases</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(32px,4vw,56px);">
+      <h2 id="h-edge">The happy path was easy. <span class="text-gold">The real work started here.</span></h2>
+      <p>In financial products, edge cases aren't rare — they're predictable. The quality of a payment product isn't measured by how it handles success. It's measured by how it handles everything that can go wrong before, during, and after.</p>
+    </div>
+
+    <!-- 6a: Zero outstanding -->
+    <div class="fade-up" style="padding:clamp(32px,4vw,48px) 0;border-top:1px solid var(--border);">
+      <div class="sm" style="margin-bottom:24px;">
+        <span class="sm-num" style="color:var(--gold)">6a</span>
+        <div class="sm-line"></div>
+        <span class="sm-label">Zero Outstanding — When Nothing to Pay Still Needs Design</span>
+      </div>
+      <div class="split">
+        <div>
+          <h3>A payment experience for customers who don't need to make a payment.</h3>
+          <p>Zero-balance customers were the single largest driver of avoidable support calls in the legacy system. They arrived ready to pay. They saw amounts showing ₹0.00 with no explanation. They assumed the system was broken. They called the helpline. The helpline told them their balance was zero. The customer felt confused, then embarrassed.</p>
+          <p>The fix wasn't a backend change. It was a UX decision: explain the account state before the customer has to wonder about it. A graceful exit, not a dead end.</p>
+          <div class="callout callout-blue" style="margin-top:24px;">
+            <p>"Good design isn't always helping users take action. Sometimes it's helping them understand why no action is needed."</p>
+          </div>
+        </div>
+        <div>
+          <!-- Entry screen first — builds narrative tension before the reveal -->
+          <div class="screen-frame img-hover" style="margin-bottom:14px;">
+            <img src="images/zero-step1.jpg" alt="Zero outstanding entry — identical to standard flow, customer has no reason to expect what comes next" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-bottom:20px;">
+            <span class="screen-cap-tag">Step 1 — identical entry, zero signal</span>
+            <p class="screen-cap-text">Customers begin exactly as they would in a standard payment. No indication that anything is different — the surprise arrives on the next screen.</p>
+          </div>
+          <div class="screen-frame img-hover">
+            <img src="images/zero-step4.jpg" alt="Zero outstanding — Rs 0.00 for all primary amounts, Other Amount Rs 5600 selected, 'Please ignore if already paid'" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:12px;">
+            <span class="screen-cap-tag">The reveal — graceful, not broken</span>
+            <p class="screen-cap-text">"Please ignore if already paid." Six words that replaced a support call. Instead of a blank dead end, an explanation and a dignified exit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6b: Regulatory limit -->
+    <div class="fade-up" style="padding:clamp(32px,4vw,48px) 0;border-top:1px solid var(--border);">
+      <div class="sm" style="margin-bottom:24px;">
+        <span class="sm-num" style="color:var(--gold)">6b</span>
+        <div class="sm-line"></div>
+        <span class="sm-label">Regulatory Limit — Proactive, Not Reactive</span>
+      </div>
+      <div class="split">
+        <div class="screen-frame img-hover">
+          <img src="images/step4-limit-modal.jpg" alt="UPI limit modal — UPI payments above Rs 1,00,000 not permitted per RBI regulatory guideline, Okay" loading="lazy">
+        </div>
+        <div>
+          <h3>RBI limits UPI to ₹1 lakh. Most apps discover this after the QR is scanned.</h3>
+          <p>When a customer tries to pay above ₹1,00,000 via UPI, the default experience in most apps is a cryptic decline — after the QR has been generated, possibly scanned, and the customer is already waiting for confirmation.</p>
+          <p>We surfaced the constraint <em>before</em> QR generation: clear RBI language, the specific limit, and what the customer should do instead. A trust-building detour rather than a trust-breaking dead end.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6c: Validation + System States -->
+    <div class="fade-up" style="padding:clamp(32px,4vw,48px) 0;border-top:1px solid var(--border);">
+      <div class="sm" style="margin-bottom:24px;">
+        <span class="sm-num" style="color:var(--gold)">6c</span>
+        <div class="sm-line"></div>
+        <span class="sm-label">Validation &amp; System States — Every failure scenario, designed</span>
+      </div>
+
+      <!-- 3-col: two validation modals + loading state -->
+      <div class="screen-grid screen-grid-3 fade-up" style="margin-bottom:clamp(20px,3vw,32px);">
+        <div>
+          <div class="screen-frame img-hover">
+            <img src="images/val-mobile.jpg" alt="Invalid mobile number modal — immediate client-side feedback, specific error message, single Okay CTA" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:10px;">
+            <span class="screen-cap-tag">Validation — mobile</span>
+            <p class="screen-cap-text">"Mobile number is invalid." Client-side, immediate, specific. No API call. No 3-second wait that feels like a server failure.</p>
+          </div>
+        </div>
+        <div>
+          <div class="screen-frame img-hover">
+            <img src="images/val-card.jpg" alt="Invalid credit card number modal — same consistent modal pattern as mobile validation" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:10px;">
+            <span class="screen-cap-tag">Validation — card number</span>
+            <p class="screen-cap-text">"Credit card number is invalid." Same modal pattern. Consistent behaviour is a trust signal — customers learn once, apply everywhere.</p>
+          </div>
+        </div>
+        <div>
+          <div class="screen-frame img-hover">
+            <img src="images/state-loading.jpg" alt="Loading state — Please wait while we fetch your details, illustrated hourglass, spinner" loading="lazy">
+          </div>
+          <div class="screen-caption" style="margin-top:10px;">
+            <span class="screen-cap-tag">Loading state</span>
+            <p class="screen-cap-text">"Fetching your details." A loading screen that explains itself. Replaces the blank white delay that customers assumed was a crash.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- System error — split layout -->
+      <div class="split fade-up" style="align-items:center;">
+        <div class="screen-frame img-hover">
+          <img src="images/state-error.jpg" alt="System error — illustrated gears, Oops something went wrong, please try again later" loading="lazy">
+        </div>
+        <div>
+          <div class="dm-tag" style="margin-bottom:8px;">System-level failure</div>
+          <h3 style="margin-bottom:12px;">When the bank's systems fail, the UX still has a job to do.</h3>
+          <p>An illustrated error state with plain language — "Oops! Something went wrong. Please try again later." No technical codes, no red alarms, no blame. Empathy as a design decision. The illustration signals that this is a known, handled state — not a broken experience.</p>
+          <div class="callout callout-blue" style="margin-top:20px;">
+            <p>"A good error screen tells the user three things: what happened, that it's not their fault, and what to do next."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="transition-hook fade-up">
+      <span class="transition-hook-arrow">↓</span>
+      <p class="transition-hook-text">Edge cases covered. But we still had to solve the hardest product architecture decision of the project — <strong>whether STPL deserved its own experience entirely.</strong></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 07 — STPL ══════════════════════════ -->
+<section class="section" id="stpl" aria-labelledby="h-stpl">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">07</span><div class="sm-line"></div><span class="sm-label">STPL Complexity</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
+      <h2 id="h-stpl">The decision that looked like a UX call <span class="text-gold">was actually a product call.</span></h2>
+      <p>Unlike standard credit card payments, STPL customers had completely different repayment expectations, different account formats, and different validation requirements. Reusing the standard payment experience would have created persistent confusion and increased support dependency — the exact problem we were trying to solve.</p>
+      <p>The question wasn't how to style a toggle between the two products. The question was whether STPL deserved its own journey — its own entry point, its own fields, its own rules.</p>
+      <p><strong>It did. And we built it.</strong></p>
+    </div>
+
+    <div class="stpl-compare fade-up">
+      <div class="stpl-col">
+        <div class="stpl-col-label stpl-cc">Credit Card Payment</div>
+        <div class="stpl-row"><span class="stpl-key">Account format</span><span class="stpl-val">16-digit card number</span></div>
+        <div class="stpl-row"><span class="stpl-key">Payment options</span><span class="stpl-val">Full / Minimum / Custom</span></div>
+        <div class="stpl-row"><span class="stpl-key">Minimum due</span><span class="stpl-val">Yes — statement cycle</span></div>
+        <div class="stpl-row"><span class="stpl-key">Entry point</span><span class="stpl-val">"Credit Cards" tab</span></div>
+        <div class="stpl-row"><span class="stpl-key">Wrong product paid</span><span class="stpl-val">Card balance clears</span></div>
+      </div>
+      <div class="stpl-col">
+        <div class="stpl-col-label stpl-sl">STPL Loan Repayment</div>
+        <div class="stpl-row"><span class="stpl-key">Account format</span><span class="stpl-val">15-digit loan account</span></div>
+        <div class="stpl-row"><span class="stpl-key">Payment options</span><span class="stpl-val">Full / Custom only</span></div>
+        <div class="stpl-row"><span class="stpl-key">Minimum due</span><span class="stpl-val">No — loan schedule</span></div>
+        <div class="stpl-row"><span class="stpl-key">Entry point</span><span class="stpl-val">"Dial For Cash Loan" tab</span></div>
+        <div class="stpl-row"><span class="stpl-key">Wrong product paid</span><span class="stpl-val">STPL stays unpaid — dispute</span></div>
+      </div>
+    </div>
+
+    <div class="screen-grid fade-up">
+      <div>
+        <div class="screen-frame img-hover">
+          <img src="images/stpl-step1.jpg" alt="STPL entry — Dial For Cash Loan tab active, loan account number fields, 3-step loan repayment guide" loading="lazy">
+        </div>
+        <div class="screen-caption" style="margin-top:12px;">
+          <span class="screen-cap-tag">Dedicated entry point</span>
+          <p class="screen-cap-text">A separate tab creates a hard mental boundary. Customers know which product they're paying before entering a single digit.</p>
+        </div>
+      </div>
+      <div>
+        <div class="screen-frame img-hover">
+          <img src="images/stpl-step4.jpg" alt="STPL amount selection — loan outstanding summary, Remaining Amount Due only, no minimum due option" loading="lazy">
+        </div>
+        <div class="screen-caption" style="margin-top:12px;">
+          <span class="screen-cap-tag">Simplified, accurate choice set</span>
+          <p class="screen-cap-text">No minimum due option — because STPL doesn't support it. The UI reflects the product's actual rules, not a copy-paste of the credit card flow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout fade-up">
+      <p>"The best decision in this section wasn't about how the screens looked. It was deciding that STPL needed its own journey at all."</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 10 — ENGINEERING ══════════════════════════ -->
+<section class="section section-alt" id="eng" aria-labelledby="h-eng">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">10</span><div class="sm-line"></div><span class="sm-label">Engineering Collaboration</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
+      <h2 id="h-eng">The countdown timer wasn't my idea. <span class="text-gold">It came from an engineer.</span></h2>
+      <p>In week two, an engineer mentioned offhand that UPI QR codes expire after 5 minutes during an API response discussion. That single comment became one of the most important UX decisions in the product — a visible countdown timer that dissolved the highest-anxiety moment in the entire payment journey. That's what happens when design is present in engineering conversations, not just at handoff.</p>
+    </div>
+
+    <div class="eng-grid fade-up">
+      <div class="eng-card">
+        <div class="eng-phase">Phase 1</div>
+        <div class="eng-title">API Response Mapping</div>
+        <p class="eng-desc">Engineering mapped all available API fields in week 1 — including which payment status responses were synchronous and which were asynchronous. This determined the pending state design and recovery path before any wireframe was drawn.</p>
+      </div>
+      <div class="eng-card">
+        <div class="eng-phase">Phase 2</div>
+        <div class="eng-title">Validation Logic Reviews</div>
+        <p class="eng-desc">Weekly design-engineering syncs on validation rules before any screen went to high-fidelity. QR download required a new API endpoint — scoped and built in sprint 3 after the design case was made with user context.</p>
+      </div>
+      <div class="eng-card">
+        <div class="eng-phase">Phase 3</div>
+        <div class="eng-title">Payment State + Timeout Handling</div>
+        <p class="eng-desc">QA surfaced two undocumented edge states during UAT: a session hang when the bank API timed out mid-load, and a race condition on the pending → failed state transition. Both were designed and resolved before release.</p>
+      </div>
+      <div class="eng-card">
+        <div class="eng-phase">Phase 4</div>
+        <div class="eng-title">UAT Support</div>
+        <p class="eng-desc">Participated in all three UAT cycles across all three journeys. Raised 4 UI-level defects found during live testing that weren't in the written spec. Design was present through delivery — not just at handoff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 11 — IMPACT ══════════════════════════ -->
+<section class="section" id="impact" aria-labelledby="h-impact">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">11</span><div class="sm-line"></div><span class="sm-label">Impact</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
+      <h2 id="h-impact">What the product <span class="text-gold">made possible</span></h2>
+      <p>Before this shipped, RBL Bank credit card customers could only pay their bills online via internet banking or another bank's debit card. UPI — the payment method they used for everything else — wasn't an option on the RBL website at all. After this shipped, it was.</p>
+    </div>
+
+    <div class="impact-3col fade-up">
+      <div class="impact-col">
+        <div class="impact-col-title product">Product Impact</div>
+        <div class="impact-item">Introduced UPI as a payment method on the RBL Bank website for the first time — previously customers could only pay via internet banking or another bank's debit card</div>
+        <div class="impact-item">Established a reusable payment design framework — journey architecture, edge case patterns, and failure states directly applicable to future EMI, BNPL, and loan repayment products</div>
+        <div class="impact-item">Separated STPL loan repayment and Credit Card payment into distinct product journeys — eliminating wrong-payment errors and the compliance overhead they created</div>
+      </div>
+      <div class="impact-col">
+        <div class="impact-col-title customer">Customer Impact</div>
+        <div class="impact-item">Customers could now pay their credit card bill via UPI directly on the RBL website — a faster, more familiar method they were already using for everyday payments</div>
+        <div class="impact-item">Zero-balance customers received a clear explanation instead of a blank screen — resolving the most common reason they were calling support unnecessarily</div>
+        <div class="impact-item">Every payment outcome — success, pending, or failed — now showed a full transaction receipt with Payment ID, so customers had what they needed to act without calling anyone</div>
+      </div>
+      <div class="impact-col">
+        <div class="impact-col-title business">Business Impact</div>
+        <div class="impact-item">Added UPI as a new payment channel on the RBL website — expanding digital payment options beyond the existing internet banking and debit card methods</div>
+        <div class="impact-item">Reduced avoidable support calls — zero-balance confusion and payment status uncertainty were the top drivers, both addressed through proactive design rather than backend changes</div>
+        <div class="impact-item">Shipped fully compliant at launch — all RBI UPI guidelines surfaced proactively in the UI, STPL copy reviewed and approved by legal, zero compliance gaps at go-live</div>
+      </div>
+    </div>
+
+    <div class="narrow fade-up" style="margin-top:clamp(28px,3vw,48px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--border);">
+      <p>Three months after launch, the customer care team described the change in support patterns: <em>"We're getting fewer calls about payment issues. And when customers do call, they already understand what happened — they're asking a specific question, not reporting that the page looks broken."</em></p>
+      <p>That second part mattered as much as the first. The zero-balance confusion and blank-screen panic that had driven the most avoidable calls were gone — not because of a backend fix, but because the UI finally explained what it knew.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEXT PROJECT -->
+<div class="next-project">
+  <div>
+    <div class="next-label">Next Case Study</div>
+    <a class="next-title" href="#">Redesigning Dineout's Discovery Experience &rarr;</a>
+  </div>
+  <a class="next-arrow" href="#top" aria-label="Back to top">↑</a>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   Background system — matches homepage v2 exactly
+   Dot-grid lives in CSS. JS adds spotlight + code chars.
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var rm    = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var touch = window.matchMedia('(hover:none),(pointer:coarse)').matches;
+
+  /* ── Code character layer ──────────────────────────────── */
+  (function buildCodeLayer(){
+    var layer = document.getElementById('code-layer');
+    if(!layer || rm) return;
+
+    var chars = [
+      '<','(',')','{','}','[',']','/','\\',';',':','?','~','_','=','>',
+      '+','-','*','%','#','@','!','&','|','^','`','"',"'",',','.',
+      '0','1','2','3'
+    ];
+
+    var count = 90;
+    var nodes = [];
+
+    for(var i = 0; i < count; i++){
+      var el = document.createElement('span');
+      el.className = 'code-char';
+      el.textContent = chars[Math.floor(Math.random() * chars.length)];
+      el.style.left    = (Math.random() * 98) + '%';
+      el.style.top     = (Math.random() * 98) + '%';
+      el.style.opacity = (0.04 + Math.random() * 0.05).toString();
+      el.style.fontSize = (10 + Math.random() * 3) + 'px';
+      layer.appendChild(el);
+      nodes.push({
+        el: el,
+        bx: parseFloat(el.style.left) / 100 * window.innerWidth,
+        by: parseFloat(el.style.top)  / 100 * window.innerHeight
+      });
+    }
+
+    window.addEventListener('resize', function(){
+      nodes.forEach(function(n){
+        n.bx = parseFloat(n.el.style.left) / 100 * window.innerWidth;
+        n.by = parseFloat(n.el.style.top)  / 100 * window.innerHeight;
+      });
+    }, {passive:true});
+
+    document.addEventListener('mousemove', function(e){
+      var radius = 180;
+      nodes.forEach(function(n){
+        var dx   = n.bx - e.clientX;
+        var dy   = n.by - e.clientY;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < radius){
+          var s = 1 - (dist / radius);
+          n.el.style.color      = 'rgba(232,197,71,' + (0.15 + s * 0.55) + ')';
+          n.el.style.opacity    = (0.08 + s * 0.45).toString();
+          n.el.style.textShadow = s > 0.5
+            ? '0 0 8px rgba(232,197,71,' + (s * 0.4) + ')'
+            : 'none';
+        } else {
+          n.el.style.color      = 'rgba(255,255,255,0.06)';
+          n.el.style.opacity    = '0.06';
+          n.el.style.textShadow = 'none';
+        }
+      });
+    }, {passive:true});
+  })();
+
+  /* ── Spotlight: gold radial glow follows cursor ──────────── */
+  (function initSpotlight(){
+    if(rm || touch) return;
+    var sp = document.getElementById('spotlight');
+    if(!sp) return;
+    document.addEventListener('mousemove', function(e){
+      var xp = (e.clientX / window.innerWidth  * 100).toFixed(1) + '%';
+      var yp = (e.clientY / window.innerHeight * 100).toFixed(1) + '%';
+      sp.style.background =
+        'radial-gradient(circle 340px at ' + xp + ' ' + yp + ', rgba(232,197,71,0.06) 0%, rgba(232,197,71,0.02) 40%, transparent 70%)';
+    }, {passive:true});
+  })();
+
+  /* ── Video controls ────────────────────────────────────── */
+  (function initVideo(){
+    var video   = document.querySelector('.case-video');
+    var playBtn = document.querySelector('.vid-play');
+    var muteBtn = document.querySelector('.vid-mute');
+    if(!video) return;
+
+    // Play/pause
+    if(playBtn){
+      playBtn.addEventListener('click', function(){
+        if(video.paused){
+          video.play();
+          playBtn.querySelector('.icon-pause').style.display = '';
+          playBtn.querySelector('.icon-play').style.display  = 'none';
+        } else {
+          video.pause();
+          playBtn.querySelector('.icon-pause').style.display = 'none';
+          playBtn.querySelector('.icon-play').style.display  = '';
+        }
+      });
+    }
+
+    // Mute/unmute
+    if(muteBtn){
+      muteBtn.addEventListener('click', function(){
+        video.muted = !video.muted;
+        muteBtn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+        muteBtn.querySelector('.icon-muted').style.display   = video.muted ? '' : 'none';
+      });
+    }
+  })();
+
+  /* ── Hero device 3D tilt (cursor-reactive) ────────────── */
+  (function initHeroTilt(){
+    if(rm || touch) return;
+    var img = document.querySelector('.hero-device-img img');
+    var hero = document.querySelector('.hero');
+    if(!img || !hero) return;
+
+    hero.addEventListener('mousemove', function(e){
+      var r = img.getBoundingClientRect();
+      var cx = r.left + r.width  / 2;
+      var cy = r.top  + r.height / 2;
+      var dx = Math.max(-1, Math.min(1, (e.clientX - cx) / (r.width  / 2)));
+      var dy = Math.max(-1, Math.min(1, (e.clientY - cy) / (r.height / 2)));
+      img.style.animationPlayState = 'paused';
+      img.style.transform = 'perspective(1000px) rotateX('+(-dy*4)+'deg) rotateY('+(dx*6)+'deg) translateY(-4px)';
+      img.style.transition = 'transform 80ms linear';
+    });
+    hero.addEventListener('mouseleave', function(){
+      img.style.animationPlayState = 'running';
+      img.style.transform = '';
+      img.style.transition = 'transform 600ms cubic-bezier(0.34,1.56,0.64,1)';
+    });
+  })();
+
+  /* ── Figma prototype — hide if embed fails ──────────── */
+  (function initProto(){
+    var iframe = document.getElementById('figma-embed');
+    var wrap   = document.getElementById('proto-wrap');
+    var section = document.getElementById('prototype');
+    if(!iframe || !wrap) return;
+
+    // If iframe fails to load, hide the entire section
+    iframe.addEventListener('error', function(){
+      if(section) section.style.display = 'none';
+    });
+
+    // Also check after 8 seconds — if iframe content is still blank/error
+    setTimeout(function(){
+      try {
+        // Can't access cross-origin iframe content, but we can check if src is valid
+        var src = iframe.getAttribute('src') || '';
+        if(!src || src.indexOf('figma.com') === -1) {
+          if(section) section.style.display = 'none';
+        }
+      } catch(e){}
+    }, 8000);
+  })();
+
+  /* ── Nav scroll state ──────────────────────────────────── */
+  (function initNavScroll(){
+    var nav = document.getElementById('nav');
+    if(!nav) return;
+    window.addEventListener('scroll', function(){
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, {passive:true});
+  })();
+
+  /* ── Live clock ────────────────────────────────────────── */
+  (function initClock(){
+    function tick(){
+      var el = document.getElementById('nav-time');
+      if(!el) return;
+      try {
+        var t = new Date().toLocaleTimeString('en-US',{
+          timeZone:'America/Los_Angeles',
+          hour:'numeric', minute:'2-digit', hour12:true
+        });
+        el.textContent = 'Los Angeles · ' + t;
+      } catch(e){}
+    }
+    tick();
+    setInterval(tick, 15000);
+  })();
+
+  /* ── Hamburger + mobile drawer ─────────────────────────── */
+  (function initHamburger(){
+    var ham = document.querySelector('.nav-ham');
+    var mob = document.getElementById('nav-mob-cs');
+    if(!ham || !mob) return;
+
+    ham.addEventListener('click', function(){
+      var open = mob.classList.toggle('open');
+      ham.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    mob.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mob.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && mob.classList.contains('open')){
+        mob.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        ham.focus();
+      }
+    });
+  })();
+
+})();
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
