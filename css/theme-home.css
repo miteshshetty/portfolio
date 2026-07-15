@@ -1,0 +1,59 @@
+/* ============================================================
+   THEME — Light / Dark mode (homepage token names)
+   ============================================================ */
+
+:root, [data-theme="dark"] {
+  --theme-dot: rgba(255,255,255,0.16);
+  --theme-vignette: rgba(7,8,12,0.55);
+}
+
+[data-theme="light"] {
+  --bg:   #FAFAF8;
+  --bg2:  #FFFFFF;
+  --bg3:  #F1F0EC;
+  --b:    rgba(10,10,10,0.08);
+  --bhi:  rgba(10,10,10,0.14);
+  --t1:   #16151A;
+  --t2:   #55535E;
+  --t3:   #8B8894;
+  --gold: #B8860B;
+  --gd:   rgba(184,134,11,0.08);
+  --gl:   rgba(184,134,11,0.26);
+  --blue: #3D5FDB;
+  --grn:  #1C9A5C;
+  --red:  #D14424;
+
+  --theme-dot: rgba(10,10,10,0.09);
+  --theme-vignette: rgba(250,250,248,0.5);
+}
+
+body { background-image: radial-gradient(circle, var(--theme-dot) 1px, transparent 1px) !important; }
+body::after { background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, var(--theme-vignette) 100%) !important; }
+
+body, #nav, .nav-mob, .project-card, .card-inner, .exp-item, .spec-card,
+.hp-card, .think-cell, .ai-card, footer, #contact {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--bhi);
+  background: var(--bg2);
+  color: var(--t2);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color .2s, border-color .2s, background .2s, transform .2s;
+}
+.theme-toggle:hover { color: var(--t1); border-color: var(--gl); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  body, #nav, .nav-mob, .project-card, .card-inner, .exp-item, .spec-card,
+  .hp-card, .think-cell, .ai-card, footer, #contact, .theme-toggle { transition: none; }
+}

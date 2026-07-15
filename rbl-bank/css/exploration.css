@@ -1,0 +1,85 @@
+/* ============================================================
+   DESIGN EXPLORATION & ITERATIONS — reusable empty shells.
+   No fabricated content. Every placeholder is visibly a
+   placeholder (dashed border, muted tone, explicit "Add" label)
+   so it never reads as finished, real content.
+   ============================================================ */
+
+.shell-note {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 600; color: var(--t3);
+  background: var(--bg-2); border: 1px dashed var(--border-hi);
+  border-radius: 100px; padding: 5px 12px;
+  margin-bottom: clamp(20px, 2.5vw, 28px);
+}
+.shell-note svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ── Concept exploration cards ── */
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 20px);
+  margin: clamp(20px, 2.5vw, 28px) 0;
+}
+.explore-card {
+  border: 1px dashed var(--border-hi);
+  border-radius: var(--rl);
+  padding: clamp(16px, 2vw, 20px);
+  background: var(--bg-2);
+}
+.explore-card.is-selected { border-style: solid; border-color: var(--gold-line); background: var(--gold-dim); }
+.explore-card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--t3); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.explore-card.is-selected .explore-card-label { color: var(--gold); }
+.explore-placeholder-img {
+  aspect-ratio: 4/3;
+  border: 1px dashed var(--border-hi);
+  border-radius: var(--r);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; color: var(--t3); font-size: 11px;
+  margin-bottom: 12px;
+}
+.explore-placeholder-img svg { width: 22px; height: 22px; opacity: .6; }
+.explore-card-title { font-size: 13.5px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
+.explore-card-why {
+  font-size: 12px; color: var(--t3); line-height: 1.6;
+  border-left: 2px dashed var(--border-hi); padding-left: 10px;
+}
+
+/* ── Iteration stepper ── */
+.iter-stepper {
+  display: flex; align-items: stretch; gap: 0;
+  overflow-x: auto; margin: clamp(20px, 2.5vw, 28px) 0;
+  padding-bottom: 4px;
+}
+.iter-step {
+  flex: 1 1 180px; min-width: 160px;
+  border: 1px dashed var(--border-hi);
+  border-radius: var(--rl);
+  padding: 16px;
+  background: var(--bg-2);
+  position: relative;
+}
+.iter-step.is-final { border-style: solid; border-color: var(--gold-line); background: var(--gold-dim); }
+.iter-step-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--t3); margin-bottom: 8px; }
+.iter-step.is-final .iter-step-label { color: var(--gold); }
+.iter-placeholder-img {
+  aspect-ratio: 4/3;
+  border: 1px dashed var(--border-hi);
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3); margin-bottom: 8px;
+}
+.iter-placeholder-img svg { width: 18px; height: 18px; opacity: .5; }
+.iter-step-text { font-size: 11px; color: var(--t3); line-height: 1.5; }
+.iter-arrow {
+  flex: 0 0 auto; width: 28px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3);
+}
+
+@media (max-width: 860px) {
+  .explore-grid { grid-template-columns: 1fr; }
+}

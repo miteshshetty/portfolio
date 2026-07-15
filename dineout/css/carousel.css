@@ -1,0 +1,85 @@
+/* ============================================================
+   WIREFRAME CAROUSEL — premium horizontal showcase
+   Infinite loop via cloned edge items · native scroll-snap for
+   momentum · pointer drag · wheel · keyboard · autoplay w/ pause.
+   ============================================================ */
+
+.wf-carousel { position: relative; margin: clamp(28px, 3vw, 44px) 0; }
+
+.wf-track {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  padding: 44px calc(50% - 130px);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.wf-track::-webkit-scrollbar { display: none; }
+.wf-track.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; user-select: none; }
+
+.wf-item {
+  flex: 0 0 auto;
+  width: 260px;
+  scroll-snap-align: center;
+  opacity: .5;
+  transform: scale(.86);
+  transition: transform .4s var(--ease), opacity .4s var(--ease);
+}
+.wf-item.is-center { opacity: 1; transform: scale(1); }
+
+.wf-item img {
+  width: 100%; display: block;
+  border-radius: var(--rl);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.wf-item.is-center img { border-color: var(--gold-line); }
+
+.wf-caption {
+  text-align: center; font-size: 11.5px; color: var(--t3);
+  margin-top: 12px; opacity: 0; transition: opacity .4s var(--ease);
+}
+.wf-item.is-center .wf-caption { opacity: 1; color: var(--t2); }
+
+/* ── Prev / next controls ── */
+.wf-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-2); border: 1px solid var(--border-hi);
+  color: var(--t2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 5;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.wf-arrow:hover { color: var(--t1); border-color: var(--gold-line); background: var(--gold-dim); }
+.wf-arrow-prev { left: 4px; }
+.wf-arrow-next { right: 4px; }
+.wf-arrow svg { width: 16px; height: 16px; }
+
+/* ── Progress dots ── */
+.wf-progress { display: flex; justify-content: center; gap: 7px; margin-top: 18px; }
+.wf-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border-hi); border: none; padding: 0; cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.wf-dot.is-active { background: var(--gold); transform: scale(1.4); }
+.wf-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .wf-track { padding: 44px calc(50% - 110px); }
+  .wf-item { width: 220px; }
+  .wf-arrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-item, .wf-caption { transition: none; }
+  .wf-track { scroll-behavior: auto; }
+}

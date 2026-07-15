@@ -1,0 +1,52 @@
+/* ============================================================
+   DINEOUT CASE STUDY — supplementary styles
+   Everything here uses the portfolio's existing CSS variables
+   (--bg, --bg-2, --border, --t1/t2/t3, --gold, --r, --rl).
+   No new colors are introduced.
+   ============================================================ */
+
+/* ── Case intro — sits below nav, above the original case study ── */
+.case-intro { padding-top: clamp(90px, 12vw, 130px); }
+
+/* ── Findings table — same visual language as the rest of the case study ── */
+.findings-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  margin: clamp(20px, 2.5vw, 28px) 0;
+}
+.findings-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.findings-table thead th {
+  background: var(--bg-3);
+  color: var(--t1);
+  text-align: left;
+  padding: 13px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.findings-table tbody td {
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  color: var(--t2);
+  line-height: 1.7;
+  vertical-align: top;
+}
+.findings-table tbody tr:last-child td { border-bottom: none; }
+.findings-table tbody tr:hover td { background: rgba(255,255,255,0.015); }
+.findings-table td.f-task-no { font-weight: 700; text-align: center; width: 52px; color: var(--gold); }
+.findings-table td.f-task-item { font-weight: 600; width: 190px; color: var(--t1); }
+.findings-table td.f-task-app p { margin: 0 0 10px; }
+.findings-table td.f-task-app p:last-child { margin-bottom: 0; }
+
+/* ── User meta line above the findings table ── */
+.finding-user-name { font-size: 16px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
+.finding-user-meta { font-size: 12px; color: var(--t3); margin-bottom: clamp(18px,2vw,24px); }
+
+@media (max-width: 720px) {
+  .findings-table { min-width: 560px; }
+}

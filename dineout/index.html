@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch(e) { document.documentElement.setAttribute('data-theme','dark'); }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dineout App — UX Research &amp; Visual Design | Mitesh Shetty</title>
+<meta name="description" content="Dineout App case study — heuristic evaluation, moderated usability testing, Mood Builder discovery concept, wireframes, and visual design.">
+<meta name="author" content="Mitesh Shetty">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dineout App — UX Research &amp; Visual Design | Mitesh Shetty">
+<meta property="og:description" content="Heuristic evaluation, moderated usability testing, and visual design for Dineout's restaurant discovery app.">
+<meta property="og:image" content="images/moodbuilder-hifi.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/case-study.css">
+<link rel="stylesheet" href="css/carousel.css">
+</head>
+<body>
+
+<div id="spotlight" aria-hidden="true"></div>
+<div id="code-layer" aria-hidden="true"></div>
+<div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
+
+<nav id="nav">
+  <div class="nav-left">
+    <a href="../index.html" class="nav-logo-link" aria-label="Back to portfolio"><span class="nav-name">Mitesh<span>.</span></span></a>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <span class="nav-clock" id="nav-time">Los Angeles · –:–</span>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <div class="nav-avail"><span class="avail-dot" aria-hidden="true"></span>Available</div>
+  </div>
+  <div class="nav-right-group" style="display:flex;align-items:center;gap:16px;">
+    <div class="nav-links-desktop nav-right">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+      <a href="mailto:miteshshetty19@gmail.com" class="nav-email">miteshshetty19@gmail.com</a>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-ham" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mob-cs"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-mob-cs" id="nav-mob-cs" role="navigation" aria-label="Mobile navigation">
+  <a href="../index.html#work">Work</a><a href="../index.html#about">About</a><a href="../index.html#experience">Experience</a>
+  <a href="../resume.pdf" target="_blank" rel="noopener">Resume ↗</a><a href="mailto:miteshshetty19@gmail.com">miteshshetty19@gmail.com</a>
+</div>
+
+<nav class="section-nav" id="section-nav" aria-label="Case study sections">
+  <div class="section-nav-track" aria-hidden="true"><div class="section-nav-progress" id="section-nav-progress"></div></div>
+  <ul class="section-nav-list">
+    <li><a href="#top" data-section="top" class="section-nav-link">Overview</a></li>
+    <li><a href="#context" data-section="context" class="section-nav-link">Context</a></li>
+    <li><a href="#problem" data-section="problem" class="section-nav-link">Problem</a></li>
+    <li><a href="#goals" data-section="goals" class="section-nav-link">Goals</a></li>
+    <li><a href="#research" data-section="research" class="section-nav-link">Research</a></li>
+    <li><a href="#ut-report" data-section="ut-report" class="section-nav-link">UT Report</a></li>
+    <li><a href="#objective" data-section="objective" class="section-nav-link">Objective</a></li>
+    <li><a href="#task-navigation" data-section="task-navigation" class="section-nav-link">Task Nav</a></li>
+    <li><a href="#outcome" data-section="outcome" class="section-nav-link">Outcome</a></li>
+    <li><a href="#detailed-findings" data-section="detailed-findings" class="section-nav-link">Findings</a></li>
+    <li><a href="#user-flow" data-section="user-flow" class="section-nav-link">User Flow</a></li>
+    <li><a href="#wireframe" data-section="wireframe" class="section-nav-link">Wireframe</a></li>
+    <li><a href="#visual-design" data-section="visual-design" class="section-nav-link">Visual Design</a></li>
+    <li><a href="#decisions" data-section="decisions" class="section-nav-link">Decisions</a></li>
+    <li><a href="#impact" data-section="impact" class="section-nav-link">Impact</a></li>
+    <li><a href="#reflection" data-section="reflection" class="section-nav-link">Reflection</a></li>
+  </ul>
+</nav>
+<button class="section-nav-toggle" id="section-nav-toggle" aria-expanded="false" aria-controls="section-nav" aria-label="Open section navigation">
+  <span class="section-nav-toggle-dot" aria-hidden="true"></span>Sections
+  <svg class="section-nav-toggle-caret" viewBox="0 0 9 9" fill="none" aria-hidden="true"><path d="M1.5 3L4.5 6L7.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+
+<!-- ══════════════════════════ 01 — EXECUTIVE SUMMARY ══════════════════════════ -->
+<header class="hero" id="top" tabindex="-1">
+  <div class="hero-content-col">
+    <span class="hero-tag fade-up">Dineout &middot; Times Internet &middot; Consumer Product</span>
+
+    <h1 class="hero-title fade-up delay-1">Dineout App</h1>
+
+    <p class="hero-sub-hook fade-up delay-2">
+      A UX research and redesign project for Dineout's restaurant discovery app — covering product study, heuristic evaluation, moderated usability testing with real users, and visual design refinement that introduced Mood Builder as a new way to discover restaurants.
+    </p>
+
+    <div class="hero-meta fade-up delay-3" role="list">
+      <div class="meta-item" role="listitem"><div class="meta-label">My Role</div><div class="meta-value">Senior UX/UI Designer</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Company</div><div class="meta-value">Times Internet</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Platform</div><div class="meta-value">iOS &amp; Android</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Duration</div><div class="meta-value" style="color:var(--t3);border:1px dashed var(--border-hi);border-radius:4px;padding:2px 6px;display:inline-block;font-size:11px;">[Add duration]</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Responsibilities</div><div class="meta-value">Research, Usability Testing, Interaction Design, Visual Design</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Tools</div><div class="meta-value">Figma, Sketch, Photoshop</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Team</div><div class="meta-value" style="color:var(--t3);border:1px dashed var(--border-hi);border-radius:4px;padding:2px 6px;display:inline-block;font-size:11px;">[Add team]</div></div>
+      <div class="meta-item" role="listitem"><div class="meta-label">Deliverables</div><div class="meta-value">Usability Report, Wireframes, UI Designs, Prototype</div></div>
+    </div>
+
+    <div class="hero-impact fade-up delay-4">
+      <div class="impact-stat"><span class="impact-num">4</span><span class="impact-desc">participants tested</span></div>
+      <div class="impact-stat"><span class="impact-num">83%</span><span class="impact-desc">understood the core concept</span></div>
+      <div class="impact-stat"><span class="impact-num">72%</span><span class="impact-desc">enjoyed the experience</span></div>
+      <div class="impact-stat"><span class="impact-num">7</span><span class="impact-desc">preset tasks evaluated</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up delay-2">
+    <div class="hero-device-img">
+      <img src="images/hero-composite.png" alt="Dineout App — composed view showing the Mood Builder discovery flow and restaurant browsing experience" loading="eager" id="cs-hero-device">
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════ 02 — PROJECT CONTEXT ══════════════════════════ -->
+<section class="section" id="context" tabindex="-1" aria-labelledby="h-context">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">02</span><div class="sm-line"></div><span class="sm-label">Project Context</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-context">Dineout is one of India's largest restaurant discovery and table reservation platforms.</h2>
+      <p>The app helps users find restaurants, browse offers, and book tables — but its discovery flow was built primarily around cuisine-based search and location filters. This project explored an alternative approach: letting users discover restaurants based on their mood, the kind of music they wanted, or the type of dining experience they were looking for — rather than requiring them to already know what cuisine they wanted.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 03 — PROBLEM STATEMENT ══════════════════════════ -->
+<section class="section section-alt" id="problem" tabindex="-1" aria-labelledby="h-problem">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">03</span><div class="sm-line"></div><span class="sm-label">Problem Statement</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-problem">Users don't always know what cuisine they want. <span class="text-gold">They know what kind of evening they want.</span></h2>
+      <p>Restaurant discovery apps traditionally ask users to search by cuisine, location, or price. But many users — especially those planning a social outing — start with a feeling: "somewhere fun tonight," "a quiet dinner," "live music." The existing Dineout experience had no way to serve these users. Mood Builder was the response: a discovery path built around intent and occasion, not just keywords.</p>
+    </div>
+    <div class="callout fade-up">
+      <p>"How might we help users discover restaurants when they know the experience they want but not the specific cuisine or place?"</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 04 — DESIGN GOALS ══════════════════════════ -->
+<section class="section" id="goals" tabindex="-1" aria-labelledby="h-goals">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">04</span><div class="sm-line"></div><span class="sm-label">Design Goals</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-goals">What we set out to achieve.</h2>
+    </div>
+    <div class="insights-grid fade-up">
+      <div class="insight-card">
+        <div class="insight-num">Goal 01</div>
+        <p class="insight-q">Reduce decision fatigue</p>
+        <p class="insight-a">Help users narrow down options without requiring them to already know what they want.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Goal 02</div>
+        <p class="insight-q">Improve restaurant discovery</p>
+        <p class="insight-a">Introduce browsing paths beyond cuisine and location — mood, music, and dining occasion.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Goal 03</div>
+        <p class="insight-q">Encourage exploration</p>
+        <p class="insight-a">Make discovery feel like inspiration rather than a database query.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Goal 04</div>
+        <p class="insight-q">Create a more enjoyable browsing experience</p>
+        <p class="insight-a">Align the interface with how people actually think about going out — occasion-first, not cuisine-first.</p>
+      </div>
+    </div>
+
+    <div class="narrow fade-up" style="margin-top:clamp(28px,3vw,40px);">
+      <h3>Project Constraints</h3>
+      <p>The redesign had to work within the existing Dineout platform and navigation structure, maintain brand consistency, and remain feasible for the engineering team to implement without a ground-up rebuild.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 05 — RESEARCH APPROACH ══════════════════════════ -->
+<section class="section section-alt" id="research" tabindex="-1" aria-labelledby="h-research">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">05</span><div class="sm-line"></div><span class="sm-label">Research Approach</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-research">How we validated the concept.</h2>
+      <p>Research for this project consisted primarily of moderated usability testing using the interactive prototype. Before conducting the UT, we ran a small pilot test of the Dineout mobile app to understand baseline expectations. We then created a set of preset tasks for participants to perform during the formal sessions.</p>
+      <p>The study was not supplemented with surveys, analytics, or competitive analysis — the focus was on direct observation of real users interacting with the prototype, documenting their behavior, confusion points, and satisfaction.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 06 — USER TESTING INTERVIEW REPORT ══════════════════════════ -->
+<section class="section" id="ut-report" tabindex="-1" aria-labelledby="h-utreport">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">06</span><div class="sm-line"></div><span class="sm-label">User Testing Interview Report</span></div>
+
+    <div class="narrow fade-up">
+      <h2 id="h-utreport">User Testing Interview Report</h2>
+    </div>
+
+    <!-- Target Audience -->
+    <div class="narrow fade-up" style="margin-top:clamp(20px,2.5vw,28px);">
+      <h4 style="color:var(--t1);margin-bottom:4px;">Target Audience</h4>
+      <p>Before conducting the UT, we ourselves ran a small pilot testing of the Dineout mobile app. Before we could go further on UT, it was very essential for us to know what was expected from the application. We created the following tasks for our participants to perform while UT.</p>
+    </div>
+
+    <!-- Preset Tasks -->
+    <div class="narrow fade-up" style="margin-top:clamp(20px,2.5vw,28px);">
+      <h4 style="color:var(--t1);margin-bottom:8px;">Preset Tasks</h4>
+      <ol style="padding-left:20px;color:var(--t2);line-height:1.8;">
+        <li>Exploring the categories</li>
+        <li>Exploring features like search, filters and sort</li>
+        <li>Comments on restaurant photographs and menu</li>
+        <li>Analysis of the restaurant information and interpreting the user ratings</li>
+        <li>Thoughts on the deals and cash backs</li>
+        <li>Login</li>
+        <li>Reserve a table</li>
+      </ol>
+    </div>
+
+    <!-- Participants -->
+    <div class="narrow fade-up" style="margin-top:clamp(20px,2.5vw,28px);">
+      <h4 style="color:var(--t1);margin-bottom:4px;">Number of Participants</h4>
+      <p>Total 4 participants (1 female and 3 male) were tested.</p>
+    </div>
+
+    <div class="narrow fade-up" style="margin-top:clamp(20px,2.5vw,28px);">
+      <h4 style="color:var(--t1);margin-bottom:8px;">Participants</h4>
+      <ol style="padding-left:20px;color:var(--t2);line-height:1.8;">
+        <li>The participants recruited were based on the Personas of the Social and Habitual diner.</li>
+        <li>Participants age group was defined as 20–35, 35–45.</li>
+        <li>Each participant was allowed to test the app on their own device.</li>
+        <li>Users were made comfortable in the video recording room and assured of maintaining the privacy of the recorded video and their personal details.</li>
+      </ol>
+    </div>
+
+    <!-- Participant Table -->
+    <div class="findings-table-wrap fade-up" style="margin-top:clamp(20px,2.5vw,28px);">
+      <table class="findings-table">
+        <thead>
+          <tr><th>Participants</th><th>Age &amp; Sex</th><th>OS</th><th>Persona</th><th>Login</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:600;color:var(--t1);">Participant 1</td><td>Female/32</td><td>Android</td><td>Habitual Diner</td><td>Facebook</td></tr>
+          <tr><td style="font-weight:600;color:var(--t1);">Participant 2</td><td>Male/35</td><td>iOS</td><td>Habitual Diner</td><td>Google account</td></tr>
+          <tr><td style="font-weight:600;color:var(--t1);">Participant 3</td><td>Male/28</td><td>Android</td><td>Social Diner</td><td>Mobile number</td></tr>
+          <tr><td style="font-weight:600;color:var(--t1);">Participant 4</td><td>Male/28</td><td>Android</td><td>Habitual Diner</td><td>Google account</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Overview Statistics -->
+    <div class="narrow fade-up" style="margin-top:clamp(32px,4vw,44px);">
+      <h3>Overview</h3>
+    </div>
+    <div class="hero-impact fade-up" style="border-top:none;margin-top:clamp(12px,1.5vw,16px);padding-top:0;">
+      <div class="impact-stat"><span class="impact-num">83%</span><span class="impact-desc">of participants understood the core premise and overall concept of this product.</span></div>
+      <div class="impact-stat"><span class="impact-num">72%</span><span class="impact-desc">of participants enjoyed the concept and the overall experience of using the product.</span></div>
+      <div class="impact-stat"><span class="impact-num">54%</span><span class="impact-desc">of participants successfully completed all tasks related to the overall concept of the product.</span></div>
+      <div class="impact-stat"><span class="impact-num">24%</span><span class="impact-desc">of participants experienced difficulty using this product.</span></div>
+    </div>
+
+    <!-- Broken Experiences -->
+    <div class="narrow fade-up" style="margin-top:clamp(28px,3vw,36px);">
+      <h3>Broken Experiences</h3>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:13px;color:var(--t2);flex:1;">Categories filter</span>
+          <div style="width:clamp(80px,12vw,140px);height:6px;background:var(--red);border-radius:3px;opacity:0.7;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:13px;color:var(--t2);flex:1;">The final confirmation page</span>
+          <div style="width:clamp(60px,8vw,100px);height:6px;background:var(--red);border-radius:3px;opacity:0.5;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:13px;color:var(--t2);flex:1;">Reservation page</span>
+          <div style="width:clamp(50px,7vw,80px);height:6px;background:var(--red);border-radius:3px;opacity:0.4;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:13px;color:var(--t2);flex:1;">Latest reviews</span>
+          <div style="width:clamp(70px,10vw,120px);height:6px;background:var(--red);border-radius:3px;opacity:0.6;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Good -->
+    <div class="narrow fade-up" style="margin-top:clamp(28px,3vw,36px);">
+      <h3 style="color:var(--green);">The Good</h3>
+      <ul style="padding-left:20px;color:var(--t2);line-height:1.8;margin-top:8px;">
+        <li>The users were happy the info provided such as cuisines, cost, and offers and mentioned it was visually appealing.</li>
+        <li>Users mentioned that the photographs were larger in size and looked real and was captivating.</li>
+      </ul>
+    </div>
+
+    <!-- The Bad -->
+    <div class="narrow fade-up" style="margin-top:clamp(20px,2.5vw,28px);">
+      <h3 style="color:var(--red);">The Bad</h3>
+      <ul style="padding-left:20px;color:var(--t2);line-height:1.8;margin-top:8px;">
+        <li>Users could not find any description of the term 'smartpay.'</li>
+        <li>Users felt categories section is very lengthy and time consuming to find the desired result.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 07 — OBJECTIVE (original) ══════════════════════════ -->
+<section class="section section-alt" id="objective" tabindex="-1" aria-labelledby="h-objective">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">07</span><div class="sm-line"></div><span class="sm-label">Objective</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-objective" style="font-size:clamp(22px,3vw,34px);">Objective</h2>
+      <p>Worked on multiple modules and delivered outcomes such as usability findings and digital assets in the form of user interface based on the analytic and comparative study following UX processes.</p>
+    </div>
+    <div class="screen-frame img-hover fade-up" style="max-width:300px;margin:clamp(28px,3vw,40px) auto 0;">
+      <img src="images/moodbuilder-hifi.png" alt="Dineout App — Mood Builder screen" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 08 — TASK NAVIGATION (original) ══════════════════════════ -->
+<section class="section" id="task-navigation" tabindex="-1" aria-labelledby="h-tasknav">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">08</span><div class="sm-line"></div><span class="sm-label">Task Navigation</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-tasknav" style="font-size:clamp(22px,3vw,34px);">Task Navigation</h2>
+      <div>
+        <h4 style="color:var(--t1);margin-bottom:4px;">Product Study</h4>
+        <p>Studied the existing product for the task flow and functionality of the app.</p>
+      </div>
+      <div style="margin-top:clamp(20px,2.5vw,24px);">
+        <h4 style="color:var(--t1);margin-bottom:4px;">Heuristics Evaluation</h4>
+        <p>HE of the app based on Jacob Nielsen's heuristic principles. A report addressing the key findings was generated.</p>
+      </div>
+      <div style="margin-top:clamp(20px,2.5vw,24px);">
+        <h4 style="color:var(--t1);margin-bottom:4px;">User Testing</h4>
+        <p>A set of mid-age-group participants were used to conduct the product UT.</p>
+      </div>
+      <div style="margin-top:clamp(20px,2.5vw,24px);">
+        <h4 style="color:var(--t1);margin-bottom:4px;">Visual Design</h4>
+        <p>App content was restructured and UI was enhanced and aligned with current trends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 09 — OUTCOME (original) ══════════════════════════ -->
+<section class="section section-alt" id="outcome" tabindex="-1" aria-labelledby="h-outcome">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">09</span><div class="sm-line"></div><span class="sm-label">The Outcome</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-outcome" style="font-size:clamp(22px,3vw,34px);">The Outcome</h2>
+      <div>
+        <h4 style="color:var(--t1);margin-bottom:4px;">Cleaner and Aesthetically Pleasing UI</h4>
+        <p>The design was aligned with the existing design trends which reflects the brand identity and received positive response from the product team and with end users.</p>
+      </div>
+      <div style="margin-top:clamp(20px,2.5vw,24px);">
+        <h4 style="color:var(--t1);margin-bottom:4px;">Consistency in the Interface of App</h4>
+        <p>The UX solution provided for the app enhanced the user's performance by curtailing the time taken to do the task, thus increasing their work efficiency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 10 — DETAILED FINDINGS (original) ══════════════════════════ -->
+<section class="section" id="detailed-findings" tabindex="-1" aria-labelledby="h-findings">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">10</span><div class="sm-line"></div><span class="sm-label">Detailed Findings</span></div>
+    <div class="fade-up">
+      <h2 id="h-findings" style="font-size:clamp(22px,3vw,34px);">Detailed Findings</h2>
+      <div class="finding-user-name">User 1: Gunjan Verma</div>
+      <div class="finding-user-meta">32/F, Android</div>
+    </div>
+
+    <div class="findings-table-wrap fade-up">
+      <table class="findings-table">
+        <thead><tr><th>Task No.</th><th>Items</th><th>App</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="f-task-no">1</td><td class="f-task-item">Restaurant listings page</td>
+            <td class="f-task-app">
+              <p>User felt restaurant location should be exact and precise in the listings' page as against what she found (Sion). She felt that address should be specific, such as name of the mall or the floor number.</p>
+              <p>User was happy that clicking on 'Kunal Kapur recommends' gave her a list of restaurants, as expected.</p>
+              <p>She was happy to find cost, available offers in the restaurant info.</p>
+              <p>The user mentioned that images look enticing and real.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="f-task-no">2</td><td class="f-task-item">Detailed Restaurant info page</td>
+            <td class="f-task-app">
+              <p>User was satisfied with the info, menu and rating in the detail page.</p>
+              <p>'Reserve now for free' confused the user — she asked 'whether we need to pay to reserve?'</p>
+              <p>The user was amused to find 'Times Food &amp; Nightlife awards 2018'. She felt it increases credibility.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="f-task-no">3</td><td class="f-task-item">Reservation</td>
+            <td class="f-task-app">
+              <p>User does not want to scroll to select the time. She feels the time slot should be displayed as chart.</p>
+              <p>On clicking 'edit' to change the number of guests, user was redirected to the detailed restaurant info page, compelling her to fill in all the details again.</p>
+              <p>The user did not find any indication about the empty mobile number field. She had to manually search for the missing inputs and fill them in order to proceed with the reservation.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="f-task-no">4</td><td class="f-task-item">Login</td>
+            <td class="f-task-app">
+              <p>User was disappointed to see the login page during reservation process. Upon insisting, she logged in through Facebook, as she did not want to type and enter the phone number.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="f-task-no">5</td><td class="f-task-item">Confirmation page</td>
+            <td class="f-task-app">
+              <p>Table booking will be confirmed after checking with restaurant' message and timeline left her doubtful about the status of reservation.</p>
+              <p>User felt 'ride with Uber' was a good feature.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="screen-caption fade-up" style="text-align:center;margin-top:clamp(24px,3vw,32px);">
+      <span class="screen-cap-tag" style="display:inline-block;">Stills from the UT</span>
+    </div>
+    <div class="screen-grid screen-grid-3 fade-up">
+      <div class="screen-frame img-hover"><img src="images/user-testing-1.png" alt="Usability testing session 1" loading="lazy"></div>
+      <div class="screen-frame img-hover"><img src="images/user-testing-2.png" alt="Usability testing session 2" loading="lazy"></div>
+      <div class="screen-frame img-hover"><img src="images/user-testing-3.png" alt="Usability testing session 3" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 11 — USER FLOW (original) ══════════════════════════ -->
+<section class="section section-alt" id="user-flow" tabindex="-1" aria-labelledby="h-flow">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">11</span><div class="sm-line"></div><span class="sm-label">User Flow Diagram</span></div>
+    <h2 id="h-flow" class="fade-up" style="font-size:clamp(22px,3vw,34px);">User Flow Diagram</h2>
+    <div class="screen-frame img-hover fade-up" style="cursor:zoom-in;background:var(--bg-2);" onclick="window.open('images/userflow.png','_blank')">
+      <img src="images/userflow.png" alt="User flow diagram — screen-to-screen navigation across the Dineout app" loading="lazy">
+    </div>
+    <p class="screen-cap-text fade-up" style="text-align:center;margin-top:10px;font-style:italic;">Can't reveal the entire flow diagram.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 12 — WIREFRAME (original carousel) ══════════════════════════ -->
+<section class="section" id="wireframe" tabindex="-1" aria-labelledby="h-wireframe">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">12</span><div class="sm-line"></div><span class="sm-label">Wireframe</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-wireframe" style="font-size:clamp(22px,3vw,34px);">Wireframe</h2>
+      <p>After analysing all the entry points, I began working on designing wireframe flows to comprehend the interactions and feedback patterns.</p>
+    </div>
+    <div class="screen-caption fade-up" style="text-align:center;margin-top:clamp(20px,2.5vw,28px);">
+      <span class="screen-cap-tag" style="display:inline-block;">High fidelity wireframes</span>
+    </div>
+    <div class="wf-carousel fade-up" id="wf-carousel" aria-roledescription="carousel" aria-label="Dineout wireframes">
+      <button class="wf-arrow wf-arrow-prev" id="wf-prev" aria-label="Previous wireframe" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="wf-track" id="wf-track">
+        <div class="wf-item"><img src="images/home-wireframe.png" alt="Wireframe — home screen" loading="lazy" draggable="false"><div class="wf-caption">Home &middot; Discovery</div></div>
+        <div class="wf-item"><img src="images/moodbuilder-wireframe.png" alt="Wireframe — Mood Builder entry" loading="lazy" draggable="false"><div class="wf-caption">Mood Builder</div></div>
+        <div class="wf-item"><img src="images/mood-grid-wireframe.png" alt="Wireframe — Mood/Music/Palate grid" loading="lazy" draggable="false"><div class="wf-caption">Mood, Music, Palate</div></div>
+        <div class="wf-item"><img src="images/music-tab-wireframe-selected.png" alt="Wireframe — Music tab selected" loading="lazy" draggable="false"><div class="wf-caption">Selections applied</div></div>
+        <div class="wf-item"><img src="images/compare-wireframe.png" alt="Wireframe — Compare restaurants" loading="lazy" draggable="false"><div class="wf-caption">Compare restaurants</div></div>
+        <div class="wf-item"><img src="images/restaurant-detail-wireframe.png" alt="Wireframe — Restaurant detail" loading="lazy" draggable="false"><div class="wf-caption">Restaurant detail</div></div>
+      </div>
+      <button class="wf-arrow wf-arrow-next" id="wf-next" aria-label="Next wireframe" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="wf-progress" id="wf-dots"><button class="wf-dot" aria-label="Wireframe 1"></button><button class="wf-dot" aria-label="Wireframe 2"></button><button class="wf-dot" aria-label="Wireframe 3"></button><button class="wf-dot" aria-label="Wireframe 4"></button><button class="wf-dot" aria-label="Wireframe 5"></button><button class="wf-dot" aria-label="Wireframe 6"></button></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 13 — VISUAL DESIGN (original + carousel upgrade) ══════════════════════════ -->
+<section class="section section-alt" id="visual-design" tabindex="-1" aria-labelledby="h-visual">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">13</span><div class="sm-line"></div><span class="sm-label">Visual Design</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-visual" style="font-size:clamp(22px,3vw,34px);">Visual Design</h2>
+      <p>Where I tried different visual styles, setting the tones and guidelines following three principles.</p>
+    </div>
+    <div class="hp-grid hp-grid-3 fade-up" style="margin-top:clamp(24px,3vw,32px);max-width:760px;">
+      <div class="hp-card"><div class="hp-icon">🎯</div><div class="hp-title">Adaptive</div></div>
+      <div class="hp-card"><div class="hp-icon">✨</div><div class="hp-title">Simple + Easy</div></div>
+      <div class="hp-card"><div class="hp-icon">💫</div><div class="hp-title">Delightful</div></div>
+    </div>
+    <div class="wf-carousel fade-up" id="vd-carousel" aria-roledescription="carousel" aria-label="Dineout final designs" style="margin-top:clamp(28px,3vw,40px);">
+      <button class="wf-arrow wf-arrow-prev" id="vd-prev" aria-label="Previous design" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="wf-track" id="vd-track">
+        <div class="wf-item"><img src="images/moodbuilder-hifi.png" alt="Final — Mood Builder" loading="lazy" draggable="false"><div class="wf-caption">Mood Builder</div></div>
+        <div class="wf-item"><img src="images/mood-tabs-hifi-selected.png" alt="Final — Music tab selected" loading="lazy" draggable="false"><div class="wf-caption">Mood &middot; Music &middot; Palate</div></div>
+        <div class="wf-item"><img src="images/mood-tabs-hifi-unselected.png" alt="Final — Mood tab default" loading="lazy" draggable="false"><div class="wf-caption">Mood tab — default</div></div>
+        <div class="wf-item"><img src="images/restaurant-detail-hifi.png" alt="Final — Restaurant detail" loading="lazy" draggable="false"><div class="wf-caption">Restaurant detail</div></div>
+      </div>
+      <button class="wf-arrow wf-arrow-next" id="vd-next" aria-label="Next design" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="wf-progress" id="vd-dots"><button class="wf-dot" aria-label="Design 1"></button><button class="wf-dot" aria-label="Design 2"></button><button class="wf-dot" aria-label="Design 3"></button><button class="wf-dot" aria-label="Design 4"></button></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 14 — DESIGN DECISIONS ══════════════════════════ -->
+<section class="section" id="decisions" tabindex="-1" aria-labelledby="h-decisions">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">14</span><div class="sm-line"></div><span class="sm-label">Design Decisions</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-decisions">The reasoning behind <span class="text-gold">observable interface decisions.</span></h2>
+    </div>
+
+    <div class="insights-grid fade-up">
+      <div class="insight-card">
+        <div class="insight-num">Decision 01</div>
+        <p class="insight-q">Why Mood Builder?</p>
+        <p class="insight-a">Usability testing showed users often start with an occasion ("happy hour," "quiet dinner") rather than a cuisine. Mood Builder gives that starting point a tappable interface — instead of asking users to translate a feeling into a search keyword.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Decision 02</div>
+        <p class="insight-q">Why circular category cards with images?</p>
+        <p class="insight-a">Image-driven circular thumbnails let users scan quickly by recognition rather than reading text labels. Each mood is represented visually — reducing cognitive load and encouraging browsing over searching.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Decision 03</div>
+        <p class="insight-q">Why tabs (Mood / Music / Palate)?</p>
+        <p class="insight-a">A tabbed structure lets users layer preferences progressively — start with mood, optionally add music or palate. This avoids overwhelming users with a single complex filter panel while keeping the full capability discoverable.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-num">Decision 04</div>
+        <p class="insight-q">Why guided discovery over free-form search?</p>
+        <p class="insight-a">Free-form search assumes the user can articulate what they want. Guided discovery works for the far more common case — people who know the experience they're after but can't name a specific restaurant or cuisine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 15 — IMPACT ══════════════════════════ -->
+<section class="section section-alt" id="impact" tabindex="-1" aria-labelledby="h-impact">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">15</span><div class="sm-line"></div><span class="sm-label">Impact</span></div>
+    <div class="narrow fade-up">
+      <h2 id="h-impact">What this project <span class="text-gold">made possible.</span></h2>
+    </div>
+
+    <div class="impact-3col fade-up">
+      <div class="impact-col">
+        <div class="impact-col-title product">Product Impact</div>
+        <div class="impact-item">Introduced Mood Builder as an alternative discovery path — restaurants surfaced by intent and occasion, not just cuisine or location.</div>
+        <div class="impact-item">Demonstrated that mood-first browsing could coexist with the existing search-driven experience without disrupting it.</div>
+        <div class="impact-item">Validated the concept with real users before committing engineering resources to a full build.</div>
+      </div>
+      <div class="impact-col">
+        <div class="impact-col-title customer">User Impact</div>
+        <div class="impact-item">83% of participants understood the concept on first exposure without explanation — the interface was self-explanatory.</div>
+        <div class="impact-item">72% said they enjoyed the experience, particularly the visual, image-driven browsing.</div>
+        <div class="impact-item">Usability testing uncovered specific friction points (categories filter length, 'smartpay' confusion, reservation flow redirects) that directly informed later design improvements.</div>
+      </div>
+      <div class="impact-col">
+        <div class="impact-col-title">Personal Design Impact</div>
+        <div class="impact-item">Strengthened moderated usability testing skills — from recruiting participants to synthesizing findings into actionable design changes.</div>
+        <div class="impact-item">Deepened consumer product thinking — designing for exploration and delight, not just task completion.</div>
+        <div class="impact-item">Improved ability to communicate research findings visually, making the case for design decisions with real user evidence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════ 16 — WHAT I'D IMPROVE + REFLECTION ══════════════════════════ -->
+<section class="section" id="reflection" tabindex="-1" aria-labelledby="h-reflection">
+  <div class="container">
+    <div class="sm fade-up"><span class="sm-num">16</span><div class="sm-line"></div><span class="sm-label">Reflection</span></div>
+
+    <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,40px);">
+      <h2 id="h-reflection">What I'd improve today.</h2>
+      <p>This project was scoped as a concept validation — prototype, test, refine. Looking back with more experience, several areas stand out as opportunities I'd pursue differently.</p>
+    </div>
+
+    <div class="learnings-grid fade-up">
+      <div class="learning-card">
+        <div class="learning-n">01</div>
+        <div class="learning-title">Larger usability studies</div>
+        <p class="learning-desc">Four participants validated the concept directionally, but a larger sample would have surfaced more edge cases and given the findings more statistical weight.</p>
+      </div>
+      <div class="learning-card">
+        <div class="learning-n">02</div>
+        <div class="learning-title">Analytics validation</div>
+        <p class="learning-desc">Post-launch analytics (funnel drop-off, session duration by entry path) would have quantified whether mood-first discovery actually converted better than search — not just whether users enjoyed it.</p>
+      </div>
+      <div class="learning-card">
+        <div class="learning-n">03</div>
+        <div class="learning-title">Accessibility improvements</div>
+        <p class="learning-desc">The image-heavy circular grid prioritises visual browsing. A text-based fallback, proper screen-reader labels, and contrast checking should have been part of the initial design pass, not a follow-up.</p>
+      </div>
+      <div class="learning-card">
+        <div class="learning-n">04</div>
+        <div class="learning-title">Personalisation and AI</div>
+        <p class="learning-desc">Today I'd explore ML-powered mood recommendations based on past behaviour — surfacing "you might be in the mood for..." rather than asking the user to self-select every time.</p>
+      </div>
+    </div>
+
+    <div class="narrow fade-up" style="margin-top:clamp(36px,4vw,52px);">
+      <h3>Looking Back</h3>
+      <p>What surprised me most was how little persuasion mood-first discovery needed. I expected to have to teach the behaviour; instead, users recognised it immediately because it matched how they already thought about going out. That insight — that the best discovery interfaces mirror the user's existing mental model rather than imposing a new one — has shaped how I approach every product since.</p>
+      <p style="margin-top:clamp(16px,2vw,20px);">This project also taught me that research doesn't need to be massive to be useful. Four carefully moderated sessions, with the right tasks and the right participants, produced findings specific enough to drive real design changes. Scale matters, but so does depth.</p>
+    </div>
+
+    <p class="learning-quote fade-up" style="margin-top:clamp(28px,3vw,40px);">"The best discovery products don't ask users to describe what they want. They help users recognise it."</p>
+  </div>
+</section>
+
+
+<!-- NEXT PROJECT -->
+<div class="next-project">
+  <div>
+    <div class="next-label">Next Case Study</div>
+    <a class="next-title" href="../rbl-bank/index.html">RBL Bank's First UPI Payment Experience &rarr;</a>
+  </div>
+  <a class="next-arrow" href="#top" aria-label="Back to top">↑</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var rm    = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var touch = window.matchMedia('(hover:none),(pointer:coarse)').matches;
+
+  (function buildCodeLayer(){
+    var layer = document.getElementById('code-layer');
+    if(!layer || rm) return;
+    var chars = ['<','(',')','{','}','[',']','/','\\',';',':','?','~','_','=','>','+','-','*','%','#','@','!','&','|','^','`','"',"'",',','.','0','1'];
+    var count = 90, nodes = [];
+    for(var i = 0; i < count; i++){
+      var el = document.createElement('span');el.className='code-char';
+      el.textContent = chars[Math.floor(Math.random()*chars.length)];
+      el.style.left=(Math.random()*98)+'%';el.style.top=(Math.random()*98)+'%';
+      el.style.opacity=(0.04+Math.random()*0.05).toString();el.style.fontSize=(10+Math.random()*3)+'px';
+      layer.appendChild(el);
+      nodes.push({el:el,bx:parseFloat(el.style.left)/100*window.innerWidth,by:parseFloat(el.style.top)/100*window.innerHeight});
+    }
+    document.addEventListener('mousemove',function(e){
+      var radius=180;
+      nodes.forEach(function(n){
+        var dx=n.bx-e.clientX,dy=n.by-e.clientY,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<radius){var s=1-(dist/radius);n.el.style.color='rgba(232,197,71,'+(0.15+s*0.55)+')';n.el.style.opacity=(0.08+s*0.45).toString();}
+        else{n.el.style.color='rgba(255,255,255,0.06)';n.el.style.opacity='0.06';}
+      });
+    },{passive:true});
+  })();
+
+  (function initSpotlight(){
+    if(rm||touch)return;var sp=document.getElementById('spotlight');if(!sp)return;
+    document.addEventListener('mousemove',function(e){
+      sp.style.background='radial-gradient(circle 340px at '+(e.clientX/window.innerWidth*100).toFixed(1)+'% '+(e.clientY/window.innerHeight*100).toFixed(1)+'%, rgba(232,197,71,0.06) 0%, rgba(232,197,71,0.02) 40%, transparent 70%)';
+    },{passive:true});
+  })();
+
+  (function(){var nav=document.getElementById('nav');if(!nav)return;window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>80);},{passive:true});})();
+  (function(){function tick(){var el=document.getElementById('nav-time');if(!el)return;try{el.textContent='Los Angeles · '+new Date().toLocaleTimeString('en-US',{timeZone:'America/Los_Angeles',hour:'numeric',minute:'2-digit',hour12:true});}catch(e){}}tick();setInterval(tick,15000);})();
+  (function(){var ham=document.querySelector('.nav-ham'),mob=document.getElementById('nav-mob-cs');if(!ham||!mob)return;ham.addEventListener('click',function(){var o=mob.classList.toggle('open');ham.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';});});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mob.classList.contains('open')){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';ham.focus();}});})();
+})();
+</script>
+<script src="js/main.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/carousel.js"></script>
+</body>
+</html>

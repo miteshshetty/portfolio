@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch(e) { document.documentElement.setAttribute('data-theme','dark'); }
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mitesh Shetty — Senior Product Designer, Los Angeles</title>
@@ -136,9 +145,17 @@ body.cur-text #cur-ring{width:20px;height:20px;opacity:.25}
 }
 .avail-dot{width:5px;height:5px;border-radius:50%;background:var(--grn);animation:pulse-g 2.2s ease-in-out infinite}
 @keyframes pulse-g{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.nav-right{display:flex;align-items:center;gap:22px;flex-shrink:0}
-.nav-right a{font-size:13px;color:var(--t2);transition:color 150ms;min-height:44px;display:flex;align-items:center}
+.nav-right{display:flex;align-items:center;gap:18px;flex-shrink:0}
+.nav-right a{font-size:13px;color:var(--t2);transition:color 150ms;min-height:44px;display:flex;align-items:center;position:relative}
 .nav-right a:hover{color:var(--t1)}
+.nav-right a[role="listitem"]::after{
+  content:'';position:absolute;left:0;right:0;bottom:16px;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform 200ms var(--ease);
+}
+.nav-right a[role="listitem"]:hover::after{transform:scaleX(1)}
+.nav-right a.is-active{color:var(--t1)}
+.nav-right a.is-active::after{transform:scaleX(1)}
 .nav-email{font-size:12px !important;color:var(--t3) !important}
 .nav-email:hover{color:var(--t2) !important}
 .nav-ham{
@@ -199,31 +216,62 @@ body.cur-text #cur-ring{width:20px;height:20px;opacity:.25}
 .hero-right{display:none}
 .hero-left{width:100%}
 
+/* Hero badges — skills / industries at a glance */
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(28px,3.5vw,40px)}
+.hero-badge{
+  font-size:12px;font-weight:500;color:var(--t2);
+  padding:6px 13px;border:1px solid var(--b);border-radius:100px;
+  background:rgba(255,255,255,0.02);
+  white-space:nowrap;
+}
+
 /* Hero CTAs */
-.hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0}
+.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:0}
 .cta-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border:1px solid var(--gold);border-radius:100px;
+  font-size:13px;font-weight:600;color:#07080C;background:var(--gold);
+  transition:filter 200ms,transform 200ms;
+}
+.cta-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.cta-primary svg{transition:transform 200ms var(--ease)}
+.cta-primary:hover svg{transform:translateX(3px)}
+.cta-secondary-btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:11px 24px;border:1px solid var(--bhi);border-radius:100px;
   font-size:13px;font-weight:500;color:var(--t1);
   transition:border-color 200ms,background 200ms;
 }
-.cta-primary:hover{border-color:var(--gold);background:var(--gd)}
-.cta-primary svg{transition:transform 200ms var(--ease)}
-.cta-primary:hover svg{transform:translateX(3px)}
+.cta-secondary-btn:hover{border-color:var(--gold);background:var(--gd)}
 .cta-secondary{
   font-size:13px;color:var(--t3);transition:color 150ms;
   display:flex;align-items:center;gap:5px;
+  min-height:44px;
 }
 .cta-secondary:hover{color:var(--t2)}
 
-/* Hero metrics row — full width strip */
-.hero-metrics{
-  display:none; /* hidden in editorial hero — metrics live in main content */
+/* Hero stats — real, verifiable figures. Unverified counts ship as
+   visible [Add Number] placeholders rather than invented numbers. */
+.hero-stats{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,2vw,28px);
+  max-width:1400px;margin:clamp(40px,5vw,64px) auto 0;
+  padding-top:clamp(28px,3vw,36px);border-top:1px solid var(--b);
+}
+.hero-stat{display:flex;flex-direction:column;gap:4px;min-width:0}
+.hero-stat-num{font-size:clamp(20px,2.6vw,32px);font-weight:700;color:var(--t1);line-height:1;white-space:nowrap}
+.hero-stat-label{font-size:11px;color:var(--t3);letter-spacing:.03em;line-height:1.4}
+.hero-stat.is-placeholder .hero-stat-num{
+  color:var(--t3);font-size:clamp(13px,1.6vw,15px);font-weight:600;
+  border:1px dashed var(--bhi);border-radius:6px;padding:3px 8px;
+  display:inline-block;white-space:normal;
 }
 
-/* No mobile overrides needed — already single column */
+@media(max-width:860px){
+  .hero-stats{grid-template-columns:repeat(2,1fr);row-gap:24px}
+}
 @media(max-width:480px){
   .hero-h1{font-size:36px}
+  .hero-stats{grid-template-columns:1fr 1fr}
 }
 
 /* ── Main content ──────────────────────────────────────────── */
@@ -518,6 +566,7 @@ footer{
   .exp-yr{display:none}
 }
 </style>
+<link rel="stylesheet" href="css/theme-home.css">
 </head>
 <body>
 
@@ -554,16 +603,22 @@ footer{
       <span class="avail-dot" aria-hidden="true"></span>Available
     </div>
   </div>
-  <div class="nav-right" role="list">
-    <a href="#work" role="listitem">Work</a>
-    <a href="#about" role="listitem">About</a>
-    <a href="#experience" role="listitem">Experience</a>
-    <a href="resume.pdf" target="_blank" rel="noopener" role="listitem">Resume ↗</a>
-    <a href="mailto:miteshshetty19@gmail.com" class="nav-email" role="listitem">miteshshetty19@gmail.com</a>
+  <div class="nav-right-group" style="display:flex;align-items:center;gap:16px;">
+    <div class="nav-right" role="list">
+      <a href="#work" role="listitem">Work</a>
+      <a href="#about" role="listitem">About</a>
+      <a href="#experience" role="listitem">Experience</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" role="listitem">Resume ↗</a>
+      <a href="mailto:miteshshetty19@gmail.com" class="nav-email" role="listitem">miteshshetty19@gmail.com</a>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-ham" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mob">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="nav-ham" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mob">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 <nav class="nav-mob" id="nav-mob" aria-label="Mobile navigation">
   <a href="#work">Work</a>
@@ -585,20 +640,61 @@ footer{
     </h1>
 
     <p class="hero-sub rev" data-delay="180">
-      <strong>12+ years</strong> shipping fintech, enterprise, and consumer products. Based in <strong>Los Angeles</strong>,
-      open to Senior and Staff Product Designer roles. Trust isn't a feature —
-      it's what every feature is really for.
+      <strong>Product Designer with 12+ years</strong> designing enterprise products across
+      Banking, FinTech, Telecom, and Enterprise SaaS — improving customer experience, increasing
+      conversion, and scaling design systems used by millions. Based in <strong>Los Angeles</strong>,
+      open to Senior and Staff Product Designer roles.
     </p>
+
+    <div class="hero-badges rev" data-delay="240" aria-label="Core skills and industries">
+      <span class="hero-badge">12+ Years Experience</span>
+      <span class="hero-badge">Product Design</span>
+      <span class="hero-badge">UX Research</span>
+      <span class="hero-badge">Design Systems</span>
+      <span class="hero-badge">Accessibility</span>
+      <span class="hero-badge">Enterprise Products</span>
+      <span class="hero-badge">Banking</span>
+      <span class="hero-badge">FinTech</span>
+      <span class="hero-badge">AI-Assisted Design</span>
+    </div>
 
     <div class="hero-ctas rev" data-delay="300">
       <a href="#work" class="cta-primary" data-magnetic>
-        View work
+        View Case Studies
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="resume.pdf" class="cta-secondary" target="_blank" rel="noopener">
-        Resume
+      <a href="resume.pdf" class="cta-secondary-btn" target="_blank" rel="noopener">
+        Download Resume
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1v7M2.5 5l3 3 3-3M1.5 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a href="#contact" class="cta-secondary">
+        Contact Me
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M2 3l3.5 3L9 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Impact stats — verified figures only; unverified counts are clearly marked, not invented -->
+  <div class="hero-stats rev" data-delay="360" aria-label="Career highlights">
+    <div class="hero-stat">
+      <div class="hero-stat-num">12+</div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">4</div>
+      <div class="hero-stat-label">Industries</div>
+    </div>
+    <div class="hero-stat is-placeholder" title="Add your real number — not yet confirmed">
+      <div class="hero-stat-num">[Add Number]+</div>
+      <div class="hero-stat-label">Products Designed</div>
+    </div>
+    <div class="hero-stat is-placeholder" title="Add your real number — not yet confirmed">
+      <div class="hero-stat-num">[Add Number]+</div>
+      <div class="hero-stat-label">Design Components Created</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Millions</div>
+      <div class="hero-stat-label">Users Impacted</div>
     </div>
   </div>
 </header>
@@ -608,10 +704,6 @@ footer{
 
   <!-- Intro + Work header — follows hero directly -->
   <section class="intro" aria-label="About this portfolio">
-    <p class="intro-bio rev">
-      <strong>12+ years</strong> across fintech, enterprise, and consumer products. Based in <strong>Los Angeles</strong>,
-      open to Senior and Staff Product Designer roles. Trust isn't a feature — it's what every feature is really for.
-    </p>
     <div class="work-header rev" id="work">
       <span class="work-title">Selected work</span>
       <span class="work-count">2 projects</span>
@@ -660,15 +752,15 @@ footer{
     </a>
 
     <!-- Dineout -->
-    <a href="#"
+    <a href="dineout/index.html"
        class="project-card card-dineout rev"
        data-co="Dineout · Times Internet"
        data-role="Product Designer · 2020–2021"
-       data-challenge="Restaurant discovery was generic — no context for mood, occasion, or group size"
-       data-outcome="Redesigned discovery to be contextual and conversion-focused"
-       data-preview=""
-       data-cursor="Coming Soon"
-       aria-label="Dineout — Restaurant Discovery Redesign — Coming soon">
+       data-challenge="Discovery products assume users already know what they want — most don't"
+       data-outcome="Designed Mood Builder — a discovery flow built around intent instead of keyword search"
+       data-preview="dineout/images/moodbuilder-hifi.png"
+       data-cursor="View Case Study"
+       aria-label="Dineout — Designing for Uncertain Intent — View case study">
       <div class="card-inner">
         <div class="card-left">
           <div>
@@ -678,21 +770,23 @@ footer{
               <span class="card-badge">Consumer · 2021</span>
             </div>
             <div class="card-desc">
-              <strong>Discovery redesign.</strong> Rebuilt the restaurant discovery experience for Dineout —
-              making search contextual, mood-aware, and measurably better at converting intent into bookings.
+              <strong>UI/UX, Research, Prototype.</strong> Studied the existing app's task flow, ran a heuristic evaluation
+              and usability testing with real users, then delivered a cleaner, more consistent interface —
+              the original case study, reproduced in full.
             </div>
           </div>
           <div class="card-cta" aria-hidden="true">
-            Case study coming soon
+            View case study
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
         <div class="card-right">
-          <div class="card-mock" aria-hidden="true">
-            <div class="mock-bar" style="width:65%;height:9px;background:rgba(255,140,60,0.35)"></div>
-            <div class="mock-row"><div class="mock-pill" style="background:rgba(255,120,40,0.22);height:46px;border-radius:9px"></div><div class="mock-pill" style="background:rgba(255,140,60,0.16);height:46px;border-radius:9px"></div></div>
-            <div class="mock-row"><div class="mock-pill" style="background:rgba(255,100,20,0.12);height:24px;border-radius:6px;flex:2"></div><div class="mock-pill" style="background:rgba(255,140,60,0.1);height:24px;border-radius:6px"></div></div>
-          </div>
+          <img class="card-right-img"
+               src="dineout/images/moodbuilder-hifi.png"
+               alt="Dineout Mood Builder screen preview"
+               loading="lazy"
+               alt="Dineout Mood Builder — Where do you want to hangout screen"
+               loading="lazy">
         </div>
       </div>
     </a>
@@ -931,6 +1025,29 @@ if(ham&&mob){
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mob.classList.contains('open')){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';ham.focus();}});
 }
 
+/* ── Active-section highlighting ─────────────────────── */
+(function(){
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-right a[role="listitem"]'));
+  var targets = navLinks
+    .map(function(a){
+      var href = a.getAttribute('href');
+      return href && href.charAt(0)==='#' ? document.getElementById(href.slice(1)) : null;
+    })
+    .filter(Boolean);
+  if(!targets.length || !('IntersectionObserver' in window)) return;
+  var byId = {};
+  navLinks.forEach(function(a){ var h=a.getAttribute('href'); if(h&&h.charAt(0)==='#') byId[h.slice(1)]=a; });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      navLinks.forEach(function(a){ a.classList.remove('is-active'); });
+      var link = byId[entry.target.id];
+      if(link) link.classList.add('is-active');
+    });
+  },{ rootMargin:'-45% 0px -50% 0px', threshold:0 });
+  targets.forEach(function(t){ spy.observe(t); });
+})();
+
 /* ── Scroll reveals with staggered delay ────────────── */
 var revEls = document.querySelectorAll('.rev');
 if(rm){revEls.forEach(function(el){el.classList.add('in');});}
@@ -1099,5 +1216,6 @@ if(askIn)askIn.addEventListener('keydown',function(e){if(e.key==='Enter')handleA
 
 })();
 </script>
+<script src="js/theme.js"></script>
 </body>
 </html>
