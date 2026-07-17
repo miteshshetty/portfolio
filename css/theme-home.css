@@ -57,3 +57,21 @@ body, #nav, .nav-mob, .project-card, .card-inner, .exp-item, .spec-card,
   body, #nav, .nav-mob, .project-card, .card-inner, .exp-item, .spec-card,
   .hp-card, .think-cell, .ai-card, footer, #contact, .theme-toggle { transition: none; }
 }
+
+/* ── Light-mode nav chrome ── */
+[data-theme="light"] #nav { background: rgba(250,250,248,0.85); }
+[data-theme="light"] #nav.scrolled { background: rgba(250,250,248,0.97); }
+[data-theme="light"] .nav-mob { background: rgba(250,250,248,0.98); }
+
+/* ── Light-mode component fixes ── */
+[data-theme="light"] .nav-mob { background: rgba(250,250,248,0.98); }
+[data-theme="light"] #code-layer,
+[data-theme="light"] #spotlight { display: none; }
+[data-theme="light"] .exp-item { border-color: var(--b); }
+[data-theme="light"] .spec-card { background: #fff; border-color: var(--b); }
+[data-theme="light"] .ai-card { background: #fff; border-color: var(--b); }
+[data-theme="light"] .think-cell { background: #fff; border-color: var(--b); }
+[data-theme="light"] footer { border-top-color: var(--b); }
+[data-theme="light"] #contact { background: var(--bg3); }
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--bhi); }

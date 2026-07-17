@@ -18,7 +18,7 @@
 
   function setPosition(pct) {
     pct = Math.max(0, Math.min(100, pct));
-    after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
     handle.style.left = pct + '%';
     handle.setAttribute('aria-valuenow', String(Math.round(pct)));
   }

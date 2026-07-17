@@ -250,10 +250,9 @@ body.cur-text #cur-ring{width:20px;height:20px;opacity:.25}
 }
 .cta-secondary:hover{color:var(--t2)}
 
-/* Hero stats — real, verifiable figures. Unverified counts ship as
-   visible [Add Number] placeholders rather than invented numbers. */
+/* Hero stats — verified figures only */
 .hero-stats{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,2vw,28px);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,28px);
   max-width:1400px;margin:clamp(40px,5vw,64px) auto 0;
   padding-top:clamp(28px,3vw,36px);border-top:1px solid var(--b);
 }
@@ -684,14 +683,6 @@ footer{
       <div class="hero-stat-num">4</div>
       <div class="hero-stat-label">Industries</div>
     </div>
-    <div class="hero-stat is-placeholder" title="Add your real number — not yet confirmed">
-      <div class="hero-stat-num">[Add Number]+</div>
-      <div class="hero-stat-label">Products Designed</div>
-    </div>
-    <div class="hero-stat is-placeholder" title="Add your real number — not yet confirmed">
-      <div class="hero-stat-num">[Add Number]+</div>
-      <div class="hero-stat-label">Design Components Created</div>
-    </div>
     <div class="hero-stat">
       <div class="hero-stat-num">Millions</div>
       <div class="hero-stat-label">Users Impacted</div>
@@ -727,9 +718,8 @@ footer{
         <div class="card-left">
           <div>
             <div class="card-company-row">
-              <div class="card-icon" aria-hidden="true">🏦</div>
-              <span class="card-co-name">RBL Bank</span>
-              <span class="card-badge">Fintech · 2022</span>
+              <img class="card-logo" src="rbl-bank/images/rbl-logo-white.png" alt="RBL Bank logo" loading="lazy" style="height:22px;width:auto;">
+<!--              <span class="card-badge">Fintech · 2022</span>-->
             </div>
             <div class="card-desc">
               <strong>0→1 product launch.</strong> Designed the bank's first UPI-based self-service credit card payment
@@ -758,16 +748,15 @@ footer{
        data-role="Product Designer · 2020–2021"
        data-challenge="Discovery products assume users already know what they want — most don't"
        data-outcome="Designed Mood Builder — a discovery flow built around intent instead of keyword search"
-       data-preview="dineout/images/moodbuilder-hifi.png"
+       data-preview="dineout/images/card-thumbnail.png"
        data-cursor="View Case Study"
        aria-label="Dineout — Designing for Uncertain Intent — View case study">
       <div class="card-inner">
         <div class="card-left">
           <div>
             <div class="card-company-row">
-              <div class="card-icon" aria-hidden="true">🍽</div>
-              <span class="card-co-name">Dineout</span>
-              <span class="card-badge">Consumer · 2021</span>
+              <img class="card-logo" src="dineout/images/dineout-logo.png" alt="Dineout logo" loading="lazy" style="height:20px;width:auto;">
+<!--              <span class="card-badge">Consumer · 2021</span>-->
             </div>
             <div class="card-desc">
               <strong>UI/UX, Research, Prototype.</strong> Studied the existing app's task flow, ran a heuristic evaluation
@@ -782,7 +771,7 @@ footer{
         </div>
         <div class="card-right">
           <img class="card-right-img"
-               src="dineout/images/moodbuilder-hifi.png"
+               src="dineout/images/card-thumbnail.png"
                alt="Dineout Mood Builder screen preview"
                loading="lazy"
                alt="Dineout Mood Builder — Where do you want to hangout screen"

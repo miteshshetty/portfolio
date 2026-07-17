@@ -86,7 +86,11 @@
 
   <!-- Left column — all text content -->
   <div class="hero-content-col">
-    <span class="hero-tag fade-up">RBL Bank &middot; 0→1 Product Design &middot; 2022</span>
+    <picture class="fade-up" style="display:block;margin-bottom:14px;">
+      <source srcset="images/rbl-logo-white.png" media="(prefers-color-scheme: dark)">
+      <img src="images/rbl-logo-white.png" alt="RBL Bank" class="case-hero-logo" id="rbl-hero-logo" style="height:22px;width:auto;display:block;" loading="eager">
+    </picture>
+    <span class="hero-tag fade-up">0→1 Product Design &middot; 2022</span>
 
     <h1 class="hero-title fade-up delay-1">
       When money is involved,<br>
@@ -107,7 +111,6 @@
       <div class="meta-item" role="listitem"><div class="meta-label">Timeline</div><div class="meta-value">Q2 – Q3 2022</div></div>
       <div class="meta-item" role="listitem"><div class="meta-label">Platform</div><div class="meta-value">Responsive Web</div></div>
       <div class="meta-item" role="listitem"><div class="meta-label">Scope</div><div class="meta-value">End-to-end, 0→1</div></div>
-      <div class="meta-item" role="listitem"><div class="meta-label">Team</div><div class="meta-value" style="color:var(--t3);border:1px dashed var(--border-hi);border-radius:4px;padding:2px 6px;display:inline-block;font-size:11px;" title="Add your real team size — not yet confirmed">[Add team size]</div></div>
       <div class="meta-item" role="listitem"><div class="meta-label">Tools</div><div class="meta-value">Figma</div></div>
       <div class="meta-item" role="listitem"><div class="meta-label">Responsibilities</div><div class="meta-value">Research, UX, UI, Prototyping</div></div>
     </div>
@@ -186,8 +189,6 @@
     <li><a href="#why" data-section="why" class="section-nav-link">Background</a></li>
     <li><a href="#evolution" data-section="evolution" class="section-nav-link">Evolution</a></li>
     <li><a href="#research" data-section="research" class="section-nav-link">Research</a></li>
-    <li><a href="#exploration" data-section="exploration" class="section-nav-link">Exploration</a></li>
-    <li><a href="#iterations" data-section="iterations" class="section-nav-link">Iterations</a></li>
     <li><a href="#journeys" data-section="journeys" class="section-nav-link">Journeys</a></li>
     <li><a href="#big-decision" data-section="big-decision" class="section-nav-link">Decision</a></li>
     <li><a href="#prototype" data-section="prototype" class="section-nav-link">Prototype</a></li>
@@ -211,7 +212,7 @@
          loading="eager"
          class="device-img-desktop">
   </div>
-  <div style="position:absolute;bottom:clamp(16px,2vw,28px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(7,8,12,0.85);border:1px solid var(--border-hi);border-radius:100px;padding:6px 14px;backdrop-filter:blur(12px);white-space:nowrap;z-index:2;">
+  <div style="position:absolute;bottom:clamp(16px,2vw,28px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--border-hi);border-radius:100px;padding:6px 14px;backdrop-filter:blur(12px);white-space:nowrap;z-index:2;">
     <span style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);">Before: Net Banking + Debit Card only</span>
     <span style="color:var(--t3)">→</span>
     <span style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);">After: UPI launched</span>
@@ -520,7 +521,8 @@
 <hr class="divider">
 
 
-<!-- ══════════════════════════ 04 — DESIGN EXPLORATION (shell — awaiting real content) ══════════════════════════ -->
+<!-- SHELLS HIDDEN UNTIL REAL CONTENT IS ADDED:
+<!~~ ══════════════════════════ 04 — DESIGN EXPLORATION (shell — awaiting real content) ══════════════════════════ ~~>
 <section class="section section-alt" id="exploration" tabindex="-1" aria-labelledby="h-exploration">
   <div class="container">
     <div class="sm fade-up"><span class="sm-num">04</span><div class="sm-line"></div><span class="sm-label">Design Exploration</span></div>
@@ -570,7 +572,7 @@
 <hr class="divider">
 
 
-<!-- ══════════════════════════ 05 — ITERATIONS (shell — awaiting real content) ══════════════════════════ -->
+<!~~ ══════════════════════════ 05 — ITERATIONS (shell — awaiting real content) ══════════════════════════ ~~>
 <section class="section" id="iterations" tabindex="-1" aria-labelledby="h-iterations">
   <div class="container">
     <div class="sm fade-up"><span class="sm-num">05</span><div class="sm-line"></div><span class="sm-label">Iterations</span></div>
@@ -620,10 +622,13 @@
 <hr class="divider">
 
 
+
+END HIDDEN SHELLS -->
+
 <!-- ══════════════════════════ 06 — THREE JOURNEYS ══════════════════════════ -->
 <section class="section" id="journeys" tabindex="-1" aria-labelledby="h-journeys">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">06</span><div class="sm-line"></div><span class="sm-label">Three Journeys. One Product.</span></div>
+    <div class="sm fade-up"><span class="sm-num">04</span><div class="sm-line"></div><span class="sm-label">Three Journeys. One Product.</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(32px,4vw,56px);">
       <h2 id="h-journeys">We weren't designing one payment flow. <span class="text-gold">We were designing three.</span></h2>
@@ -721,7 +726,7 @@
 <!-- ══════════════════════════ 04 — A DECISION THAT CHANGED EVERYTHING ══════════════════════════ -->
 <section class="section section-alt" id="big-decision" tabindex="-1" aria-labelledby="h-bigdecision">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">07</span><div class="sm-line"></div><span class="sm-label">A Design Decision That Changed Everything</span></div>
+    <div class="sm fade-up"><span class="sm-num">05</span><div class="sm-line"></div><span class="sm-label">A Design Decision That Changed Everything</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
       <h2 id="h-bigdecision">Why we chose QR over UPI deep linking — <span class="text-gold">and why it mattered.</span></h2>
@@ -819,7 +824,7 @@
 <!-- ══════════════════════════ 05 — MAIN PAYMENT JOURNEY ══════════════════════════ -->
 <section class="section" id="payment" tabindex="-1" aria-labelledby="h-payment">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">08</span><div class="sm-line"></div><span class="sm-label">Main Payment Journey</span></div>
+    <div class="sm fade-up"><span class="sm-num">06</span><div class="sm-line"></div><span class="sm-label">Main Payment Journey</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(40px,5vw,64px);">
       <h2 id="h-payment">Four screens. <span class="text-gold">Every pixel intentional.</span></h2>
@@ -959,7 +964,7 @@
 <!-- ══════════════════════════ 06 — EDGE CASES ══════════════════════════ -->
 <section class="section section-alt" id="edge" tabindex="-1" aria-labelledby="h-edge">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">09</span><div class="sm-line"></div><span class="sm-label">Edge Cases</span></div>
+    <div class="sm fade-up"><span class="sm-num">07</span><div class="sm-line"></div><span class="sm-label">Edge Cases</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(32px,4vw,56px);">
       <h2 id="h-edge">The happy path was easy. <span class="text-gold">The real work started here.</span></h2>
@@ -1089,7 +1094,7 @@
 <!-- ══════════════════════════ 07 — STPL ══════════════════════════ -->
 <section class="section" id="stpl" tabindex="-1" aria-labelledby="h-stpl">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">10</span><div class="sm-line"></div><span class="sm-label">STPL Complexity</span></div>
+    <div class="sm fade-up"><span class="sm-num">08</span><div class="sm-line"></div><span class="sm-label">STPL Complexity</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
       <h2 id="h-stpl">The decision that looked like a UX call <span class="text-gold">was actually a product call.</span></h2>
@@ -1151,7 +1156,7 @@
 <!-- ══════════════════════════ 10 — ENGINEERING ══════════════════════════ -->
 <section class="section section-alt" id="eng" tabindex="-1" aria-labelledby="h-eng">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">11</span><div class="sm-line"></div><span class="sm-label">Engineering Collaboration</span></div>
+    <div class="sm fade-up"><span class="sm-num">09</span><div class="sm-line"></div><span class="sm-label">Engineering Collaboration</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
       <h2 id="h-eng">The countdown timer wasn't my idea. <span class="text-gold">It came from an engineer.</span></h2>
@@ -1189,7 +1194,7 @@
 <!-- ══════════════════════════ 11 — IMPACT ══════════════════════════ -->
 <section class="section" id="impact" tabindex="-1" aria-labelledby="h-impact">
   <div class="container">
-    <div class="sm fade-up"><span class="sm-num">12</span><div class="sm-line"></div><span class="sm-label">Impact</span></div>
+    <div class="sm fade-up"><span class="sm-num">10</span><div class="sm-line"></div><span class="sm-label">Impact</span></div>
 
     <div class="narrow fade-up" style="margin-bottom:clamp(28px,3vw,48px);">
       <h2 id="h-impact">What the product <span class="text-gold">made possible</span></h2>

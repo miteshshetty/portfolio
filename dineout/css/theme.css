@@ -80,3 +80,38 @@ body, #nav, .section-nav, .nav-mob-cs,
     transition: none;
   }
 }
+
+/* ── Light-mode fixes for hardcoded dark chrome ── */
+[data-theme="light"] #nav { background: rgba(250,250,248,0.85); }
+[data-theme="light"] #nav.scrolled { background: rgba(250,250,248,0.97); }
+[data-theme="light"] .nav-mob-cs { background: rgba(250,250,248,0.98); }
+[data-theme="light"] .section-nav-toggle { background: rgba(250,250,248,0.92); color: var(--t1); }
+
+/* ── Light-mode section backgrounds ── */
+[data-theme="light"] .section-alt { background: rgba(241,240,236,0.6); }
+[data-theme="light"] .hook { color: var(--t1); }
+[data-theme="light"] .next-project { background: var(--bg-3); border-top: 1px solid var(--border); }
+[data-theme="light"] .next-label { color: var(--t3); }
+[data-theme="light"] .next-title { color: var(--t1); }
+[data-theme="light"] .next-arrow { color: var(--t2); border-color: var(--border); background: var(--bg-2); }
+[data-theme="light"] .insight-card,
+[data-theme="light"] .learning-card,
+[data-theme="light"] .qual-card { background: #fff; border-color: var(--border); }
+[data-theme="light"] .callout { background: rgba(184,134,11,0.06); }
+[data-theme="light"] .screen-frame { background: #fff; border-color: var(--border); }
+[data-theme="light"] .hero { background: var(--bg); }
+[data-theme="light"] .hero-meta { background: var(--border); }
+[data-theme="light"] .meta-item { background: var(--bg-2); }
+[data-theme="light"] .hp-card { background: #fff; border-color: var(--border); }
+[data-theme="light"] .impact-3col { border-color: var(--border); }
+[data-theme="light"] .impact-col { border-right-color: var(--border); }
+[data-theme="light"] .findings-table { border-color: var(--border); }
+[data-theme="light"] .findings-table thead th { background: var(--bg-3); color: var(--t1); }
+[data-theme="light"] .findings-table tbody td { border-bottom-color: var(--border); }
+[data-theme="light"] .findings-table-wrap { border-color: var(--border); }
+[data-theme="light"] #code-layer,
+[data-theme="light"] #spotlight { display: none; }
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--border-hi); }
+
+/* Dineout logo is orange — fine on both themes, just slightly reduce opacity in dark */
